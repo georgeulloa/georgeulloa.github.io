@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Email Developer Exercise</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <style type="text/css">
+        /* CLIENT SPECIFIC STYLES */
+        #outlook a {
+            padding: 0;
+        }
+
+        .ReadMsgBody {
+            width: 100%;
+        }
+
+        .ExternalClass {
+            width: 100%;
+        }
+
+        .ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div {
+            line-height: 100%;
+        }
+
+        body, table, td, a {
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+        }
+
+        table, td {
+            mso-table-lspace: 0pt;
+            mso-table-rspace: 0pt;
+        }
+
+        img {
+            -ms-interpolation-mode: bicubic;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        img {
+            border: 0;
+            height: auto;
+            line-height: 100%;
+            outline: none;
+            text-decoration: none;
+        }
+
+        table {
+            border-collapse: collapse !important;
+        }
+
+        body {
+            height: 100% !important;
+            margin: 0;
+            padding: 0;
+            width: 100% !important;
+        }
+
+        table {
+            border-collapse: collapse;
+            margin: 0px auto;
+        }
+
+        .container {
+            min-width: 0 !important
+        }
+
+        div[style*="margin: 16px 0"] {
+            margin: 0 !important;
+        }
+
+        /* WEB FONTS */
+        @import url("//hello.myfonts.net/count/2d9b47.css");
+
+        @font-face {
+            font-family: 'Museo Sans';
+            src: url('http://cdn.harrys.com/email/webfonts/2D9B47_0_0.eot');
+            src: url('http://cdn.harrys.com/email/webfonts/2D9B47_0_0.eot?#iefix') format('embedded-opentype'), url('http://cdn.harrys.com/email/webfonts/2D9B47_0_0.woff2') format('woff2'), url('http://cdn.harrys.com/email/webfonts/2D9B47_0_0.woff') format('woff'), url('http://cdn.harrys.com/email/webfonts/2D9B47_0_0.ttf') format('truetype');
+            font-weight: bold;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Museo Sans';
+            src: url('http://cdn.harrys.com/email/webfonts/2D9B47_1_0.eot');
+            src: url('http://cdn.harrys.com/email/webfonts/2D9B47_1_0.eot?#iefix') format('embedded-opentype'), url('http://cdn.harrys.com/email/webfonts/2D9B47_1_0.woff2') format('woff2'), url('http://cdn.harrys.com/email/webfonts/2D9B47_1_0.woff') format('woff'), url('http://cdn.harrys.com/email/webfonts/2D9B47_1_0.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Museo Sans';
+            src: url('http://cdn.harrys.com/email/webfonts/2D9B47_2_0.eot');
+            src: url('http://cdn.harrys.com/email/webfonts/2D9B47_2_0.eot?#iefix') format('embedded-opentype'), url('http://cdn.harrys.com/email/webfonts/2D9B47_2_0.woff2') format('woff2'), url('http://cdn.harrys.com/email/webfonts/2D9B47_2_0.woff') format('woff'), url('http://cdn.harrys.com/email/webfonts/2D9B47_2_0.ttf') format('truetype');
+            font-weight: bold;
+            font-style: italic;
+        }
+
+        @font-face {
+            font-family: 'Museo Sans';
+            src: url('http://cdn.harrys.com/email/webfonts/2D9B47_3_0.eot');
+            src: url('http://cdn.harrys.com/email/webfonts/2D9B47_3_0.eot?#iefix') format('embedded-opentype'), url('http://cdn.harrys.com/email/webfonts/2D9B47_3_0.woff2') format('woff2'), url('http://cdn.harrys.com/email/webfonts/2D9B47_3_0.woff') format('woff'), url('http://cdn.harrys.com/email/webfonts/2D9B47_3_0.ttf') format('truetype');
+            font-weight: normal;
+            font-style: italic;
+        }
+
+        @font-face {
+            font-family: 'Brandon Grotesque';
+            src: url('http://cdn.harrys.com/email/webfonts/3083F9_2_0.eot');
+            src: url('http://cdn.harrys.com/email/webfonts/3083F9_2_0.eot?#iefix') format('embedded-opentype'), url('http://cdn.harrys.com/email/webfonts/3083F9_2_0.woff2') format('woff2'), url('http://cdn.harrys.com/email/webfonts/3083F9_2_0.woff') format('woff'), url('http://cdn.harrys.com/email/webfonts/3083F9_2_0.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Brandon Grotesque';
+            src: url('http://cdn.harrys.com/email/webfonts/2D9B47_6_0.eot');
+            src: url('http://cdn.harrys.com/email/webfonts/2D9B47_6_0.eot?#iefix') format('embedded-opentype'), url('http://cdn.harrys.com/email/webfonts/2D9B47_6_0.woff2') format('woff2'), url('http://cdn.harrys.com/email/webfonts/2D9B47_6_0.woff') format('woff'), url('http://cdn.harrys.com/email/webfonts/2D9B47_6_0.ttf') format('truetype');
+            font-weight: bold;
+            font-style: normal;
+        }
+
+        @media screen and (-webkit-min-device-pixel-ratio: 0) {
+
+            .h1, .h1 a {
+                font-family: 'Brandon Grotesque', Futura, Trebuchet MS, Arial, sans-serif !important;
+                font-size: 36px !important;
+                line-height: 52px !important;
+                letter-spacing: 1.25px !important;
+                font-weight: normal !important;
+            }
+
+            .h2, .h2 a {
+                font-family: 'Brandon Grotesque', Futura, Trebuchet MS, Arial, sans-serif !important;
+                font-size: 28px !important;
+                line-height: 42px !important;
+                letter-spacing: 1px !important;
+                font-weight: normal !important;
+            }
+
+            .h3, .h3 a {
+                font-family: 'Brandon Grotesque', Futura, Trebuchet MS, Arial, sans-serif !important;
+                font-size: 24px !important;
+                line-height: 36px !important;
+                letter-spacing: 1.25px !important;
+                font-weight: normal !important;
+            }
+
+            .subheader, .subheader a {
+                font-family: 'Brandon Grotesque', Futura, Trebuchet MS, Arial, sans-serif !important;
+                font-size: 12px !important;
+                line-height: 24px !important;
+                letter-spacing: 2.3px !important;
+                font-weight: bold !important;
+            }
+
+            .body, .body a {
+                font-family: 'Museo Sans', Verdana, Geneva, sans-serif !important;
+                font-size: 15px !important;
+                line-height: 28px !important;
+                letter-spacing: 0.75px !important;
+            }
+
+            .note, .note a {
+                font-family: 'Museo Sans', Verdana, Geneva, sans-serif !important;
+                letter-spacing: 0.4px !important;
+            }
+
+            .large-cta, .large-cta a {
+                font-family: 'Brandon Grotesque', Futura, Trebuchet MS, Arial, sans-serif !important;
+                font-size: 14px !important;
+                letter-spacing: 2px !important;
+                border-top-width: 14px !important;
+                border-bottom-width: 10px !important;
+                border-right-width: 30px !important;
+                border-left-width: 30px !important;
+                font-weight: bold !important;
+            }
+
+        }
+
+        /* APPLE BLUE LINKS */
+        .smart-666666 a {
+            color: #666666 !important;
+            text-decoration: none !important;
+        }
+
+        /* MEDIA QUERY SCREEN 579px */
+        @media screen and (max-width: 579px), screen and (max-device-width: 579px) {
+            .full-table {
+                width: 100% !important;
+                min-width: 0 !important;
+                height: auto !important;
+            }
+
+            .h2 {
+                text-align: center !important;
+                padding: 0 40px !important;
+            }
+
+            .h2-save-order {
+                text-align: center !important;
+                padding: 0 20px !important;
+            }
+
+            .h3 {
+                text-align: center !important;
+                padding: 0 80px !important;
+            }
+
+            .h3-addmore-headline {
+                text-align: center !important;
+                padding: 40px 0 0 0 !important;
+            }
+
+
+            .body {
+                text-align: center !important;
+                padding: 10px 30px 0 30px !important;
+            }
+
+            .body-suggested-items-description {
+                text-align: center !important;
+                padding: 0 30px 0  30px !important;
+            }
+
+            .body-sign-up-description {
+                text-align: center !important;
+                padding: 0 30px 30px  30px !important;
+            }
+
+            .body-edit-description {
+                text-align: center !important;
+                padding: 0 0 0 0 !important;
+            }
+
+            .body-share-link-description {
+                text-align: center !important;
+                padding: 20px 0 20px 0 !important;
+            }
+
+            .note {
+                text-align: center !important;
+                padding: 0 40px 10px 40px;
+            }
+
+        }
+
+        /*adding responsive styles*/
+        /* MOBILE STYLES */
+        @media screen and (max-width: 579px) {
+
+            img[class="img-max"] {
+                max-width: 100% !important;
+                width: 100% !important;
+                height: auto !important;
+            }
+
+            table[class="responsive-table"] {
+                width: 100% !important;
+            }
+
+            td[class="section-padding"] {
+                padding: 50px 15px 50px 15px !important;
+            }
+
+            table[class="mobile-button-container"] {
+                margin: 0 auto;
+                width: 100% !important;
+            }
+
+            a[class="mobile-button"] {
+                width: 80% !important;
+                padding: 15px !important;
+                border: 0 !important;
+                font-size: 16px !important;
+            }
+
+            td[class="text-center"] {
+                text-align: center !important;
+            }
+
+            td[class="logo-container"],
+            td[class="nav-container"] {
+                padding-left: 15px !important;
+                padding-right: 15px !important;
+            }
+
+            td[class="divider-pad"] {
+                padding-left: 15px !important;
+                padding-right: 15px !important;
+            }
+
+            a[class="cta-button"] {
+                width: 75% !important;
+            }
+
+            td[class="mobile-no-padding-bottom"] {
+                padding-bottom: 0 !important;
+            }
+
+            td[class="mobile-no-padding"] {
+                padding: 0 !important;
+            }
+
+        }
+
+        /*adding responsive style*/
+
+    </style>
+</head>
+
+
+<body bgcolor="#F7F7F7"
+      style="-webkit-font-smoothing: antialiased; width:100% !important; background:#F7F7F7;-webkit-text-size-adjust:none; margin:0; padding:0; min-width:100%">
+
+<!-- PREHEADER TEXT -->
+<span style="display: none !important; color: #FFFFFF; margin:0; padding:0; font-size:1px; line-height:1px;">
+  We hope you're enjoying shaving with Harry's. We’ll be shipping your fresh supplies in a couple of days. Remember, your Shave Plan guarantees you're getting the best savings on Harry's supplies - plus free shipping, always.
+</span>
+
+<!-- CONTAINER TABLE -->
+<table class="container" border="0" cellpadding="0" cellspacing="0" width="100%" style="min-width: 580px;">
+    <tr>
+        <td>
+
+            <!-- header-logo -->
+            <table cellspacing="0" cellpadding="0" border="0" width="100%">
+    <tr>
+        <td bgcolor="#FFFFFF" align="center" style="padding: 20px;">
+            <a href="http://harrys.com?utm_source=penpal&utm_medium=email&utm_campaign=}}">
+                <img src="http://cdn.harrys.com/us-email/lifecycle/welcome/logo.png" width="115" height="20"
+                     style="font-size: 13px; font-family: 'Trebuchet MS', Helvetica, Arial, sans-serif;  color: #065778; width:115px; height:20px; display:block;" alt="HARRY'S" border="0">
+            </a>
+        </td>
+    </tr>
+    <tr>
+        <td bgcolor="#EDEDED" width="100%" height="1"
+            style="font-size:1px; line-height:1px; mso-line-height-rule: exactly;">&nbsp;
+        </td>
+    </tr>
+</table>
+            <!-- header-logo END -->
+
+
+            <!-- hero-image -->
+            <table cellspacing="0" cellpadding="0" border="0" width="100%">
+    <tr>
+        <td bgcolor="#F7F7F7" align="center" style="padding: 20px;">
+            <a href="http://harrys.com?utm_source=penpal&utm_medium=email&utm_campaign=}}">
+                <img src="https://shave-email.s3.amazonaws.com/package.jpg" width="93" height="142"
+                     style="width:93px; height:141px; display:block;" alt="HARRY'S" border="0">
+            </a>
+        </td>
+    </tr>
+</table>
+            <!-- hero-image end -->
+
+            <!--ship-info copy-->
+            <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+        <td align="center" style="padding: 0 0 30px 0;">
+            <table align="center" border="0" cellpadding="0" cellspacing="0" width="480"
+                   class="responsive-table">
+                <tr>
+                    <td align="center" style="padding: 0 15px 0 15px;">
+                        <table align="center" border="0" cellpadding="0" cellspacing="0" width="480"
+                               class="responsive-table">
+
+                            <tr>
+                                <td align="center" class="h2"
+                                    style="font-size: 26px; line-height: 42px; letter-spacing: 0.25px; font-family: Futura, Trebuchet MS, Arial, sans-serif; color: #263645; font-weight:normal; padding: 0 0 0 0">
+                                    Your first box ships on May 10th
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td align="center" class="body"
+                                    style="font-size: 14px; line-height: 30px; letter-spacing: 0px; font-family: Verdana, Geneva, sans-serif; color: #666666; font-weight:normal; padding: 8px 0 0 0;">
+                                    Hope you’re enjoying your first few shaves with Harry’s. We’re about to ship you fresh supplies, so you can continue your Shave Plan.
+                                </td>
+                            </tr>
+
+
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+            <!--ship-info copy end-->
+
+
+            
+            <!--shipped-products-->
+                <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+        <td align="center" style="padding: 0 20px 0 20px; ">
+            <table border="0" cellpadding="0" cellspacing="0" width="800" class="responsive-table">
+                <tr>
+                    <td align="center" style="padding: 0 0 0 0;">
+                        <table style="border-radius: 6px" bgcolor="white" border="0" cellpadding="0"
+                               cellspacing="0" width="480" class="responsive-table">
+                            <tr>
+                                <td>
+                                    <!-- TWO COLUMNS -->
+                                    <table align="center" cellspacing="0" cellpadding="0" border="0"
+                                           width="100%">
+                                        <tr>
+                                            <td valign="top" style="padding: 0 0 0 0"
+                                                class="mobile-wrapper">
+                                                <!-- LEFT COLUMN -->
+                                                <table cellpadding="0" cellspacing="0" border="0"
+                                                       width="47%" align="left" class="responsive-table">
+                                                    <tr>
+                                                        <td style="padding: 0 0 0 0;">
+                                                            <table cellpadding="0" cellspacing="0"
+                                                                   border="0" width="100%">
+                                                                <tr>
+                                                                    <td style="padding: 0 0 0 0"
+                                                                        align="center">
+                                                                        <a href="#" target="_blank"><img
+                                                                                src="https://shave-email.s3.amazonaws.com/checkout_2x.png"
+                                                                                alt=""
+                                                                                width="130" height="130"
+                                                                                style="display: block; width: 130px; height: 130px; vertical-align: top"></a>
+                                                                    </td>
+                                                                </tr>
+
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                                <!-- RIGHT COLUMN -->
+                                                <table cellpadding="0" cellspacing="0" border="0"
+                                                       width="47%" align="left" class="responsive-table">
+                                                    <tr>
+                                                        <td align="center" style="padding: 40px 0 0 0;">
+                                                            <table align="left" cellpadding="0" cellspacing="0"
+                                                                   border="0" width="100%">
+                                                                <tr>
+                                                                    <td align="left" class="body"
+                                                                        style="font-size: 14px; line-height: 30px; letter-spacing: 0px; font-family: Verdana, Geneva, sans-serif; color: #4A4A4A; font-weight: 400; text-align: left">Blades Plan
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td align="left" class="note"
+                                                                        style="font-size: 13px; line-height: 20px; letter-spacing: 0.4px; font-family: Verdana, Geneva, sans-serif; color: #868686; font-weight:normal; text-align: left">8x Harry’s Blades
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                            <!--line-->
+                            <tr>
+                                <td bgcolor="#EDEDED" width="100%" height="1"
+                                    style="font-size:1px; line-height:1px; mso-line-height-rule: exactly;">
+                                    &nbsp;
+                                </td>
+                            </tr>
+                            <!--line-->
+                        </table>
+                    </td>
+                </tr>
+
+            </table>
+        </td>
+    </tr>
+</table>
+            <!--shipped-products end-->
+            
+            <!--shipped-products-->
+                <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+        <td align="center" style="padding: 0 20px 0 20px; ">
+            <table border="0" cellpadding="0" cellspacing="0" width="800" class="responsive-table">
+                <tr>
+                    <td align="center" style="padding: 0 0 0 0;">
+                        <table style="border-radius: 6px" bgcolor="white" border="0" cellpadding="0"
+                               cellspacing="0" width="480" class="responsive-table">
+                            <tr>
+                                <td>
+                                    <!-- TWO COLUMNS -->
+                                    <table align="center" cellspacing="0" cellpadding="0" border="0"
+                                           width="100%">
+                                        <tr>
+                                            <td valign="top" style="padding: 0 0 0 0"
+                                                class="mobile-wrapper">
+                                                <!-- LEFT COLUMN -->
+                                                <table cellpadding="0" cellspacing="0" border="0"
+                                                       width="47%" align="left" class="responsive-table">
+                                                    <tr>
+                                                        <td style="padding: 0 0 0 0;">
+                                                            <table cellpadding="0" cellspacing="0"
+                                                                   border="0" width="100%">
+                                                                <tr>
+                                                                    <td style="padding: 0 0 0 0"
+                                                                        align="center">
+                                                                        <a href="#" target="_blank"><img
+                                                                                src="https://shave-email.s3.amazonaws.com/face-lotion.png"
+                                                                                alt=""
+                                                                                width="130" height="130"
+                                                                                style="display: block; width: 130px; height: 130px; vertical-align: top"></a>
+                                                                    </td>
+                                                                </tr>
+
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                                <!-- RIGHT COLUMN -->
+                                                <table cellpadding="0" cellspacing="0" border="0"
+                                                       width="47%" align="left" class="responsive-table">
+                                                    <tr>
+                                                        <td align="center" style="padding: 40px 0 0 0;">
+                                                            <table align="left" cellpadding="0" cellspacing="0"
+                                                                   border="0" width="100%">
+                                                                <tr>
+                                                                    <td align="left" class="body"
+                                                                        style="font-size: 14px; line-height: 30px; letter-spacing: 0px; font-family: Verdana, Geneva, sans-serif; color: #4A4A4A; font-weight: 400; text-align: left">Face Lotion
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td align="left" class="note"
+                                                                        style="font-size: 13px; line-height: 20px; letter-spacing: 0.4px; font-family: Verdana, Geneva, sans-serif; color: #868686; font-weight:normal; text-align: left">Regular (1.7oz)
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                            <!--line-->
+                            <tr>
+                                <td bgcolor="#EDEDED" width="100%" height="1"
+                                    style="font-size:1px; line-height:1px; mso-line-height-rule: exactly;">
+                                    &nbsp;
+                                </td>
+                            </tr>
+                            <!--line-->
+                        </table>
+                    </td>
+                </tr>
+
+            </table>
+        </td>
+    </tr>
+</table>
+            <!--shipped-products end-->
+            
+
+
+            <!--shipping-cost-->
+            <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+        <td align="center" style="padding: 20px 0 40px 0;">
+            <table align="center" border="0" cellpadding="0" cellspacing="0" width="480"
+                   class="responsive-table">
+                <tr>
+                    <td align="center" style="padding: 0 15px 0 15px;">
+                        <table align="center" border="0" cellpadding="0" cellspacing="0" width="480"
+                               class="responsive-table">
+
+
+                            <tr>
+                                <td align="center" class="note"
+                                    style="font-size: 13px; line-height: 20px; letter-spacing: 0.4px; font-family: Verdana, Geneva, sans-serif; color: #868686; font-weight:normal">
+                                    $15.00 total,
+                                    
+                                    free shipping
+                                    
+                                </td>
+                            </tr>
+
+
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+            <!--shipping-cost end-->
+
+            
+            
+                
+            
+                
+            
+
+            
+            <!--two col for suggested subscription -->
+                <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+        <td align="center" style="padding: 0 0 0 0; ">
+            <table border="0" cellpadding="0" cellspacing="0" width="800" class="responsive-table">
+                <tr>
+                    <td align="center" style="padding: 0 0 0 0;">
+                        <table bgcolor="white" border="0" cellpadding="0" cellspacing="0" width="540"
+                               class="responsive-table">
+                            <tr>
+                                <td>
+                                    <!-- TWO COLUMNS -->
+                                    <table bgcolor="#F7F7F7" align="center" cellspacing="0" cellpadding="0"
+                                           border="0" width="100%">
+                                        <tr>
+                                            <td valign="top" style="padding: 0 0 0 0"
+                                                class="mobile-wrapper">
+                                                <!-- LEFT COLUMN -->
+                                                <table cellpadding="0" cellspacing="0" border="0"
+                                                       width="47%" align="left" class="responsive-table">
+                                                    <tr>
+                                                        <td style="padding: 0 0 0 0;">
+                                                            <table cellpadding="0" cellspacing="0"
+                                                                   border="0" width="100%">
+                                                                <tr>
+                                                                    <td style="padding: 0 0 0 0"
+                                                                        align="center">
+                                                                        <a href="#" target="_blank"><img
+                                                                                src="https://shave-email.s3.amazonaws.com/sp-shave-gel.jpg"
+                                                                                alt="" width="280"
+                                                                                height="304"
+                                                                                style="display: block; width: 280px; height: 304px; vertical-align: top"></a>
+                                                                    </td>
+                                                                </tr>
+
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                                <!-- RIGHT COLUMN -->
+                                                <table cellpadding="0" cellspacing="0" border="0"
+                                                       width="47%" align="center" class="responsive-table">
+                                                    <tr>
+                                                        <td style="padding: 40px 0 0 0;">
+                                                            <table align="center" cellpadding="0" cellspacing="0"
+                                                                   border="0" width="100%">
+                                                                <tr>
+                                                                    <td align="center" class="h3" style="font-size: 23px; line-height: 36px; letter-spacing: 0.25px; font-family: Futura, Trebuchet MS, Arial, sans-serif; color: #263645; font-weight:normal; text-align: left"> Add Shave Gel to your plan.
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td align="center" class="body"
+                                                                        style="font-size: 14px; line-height: 28px; letter-spacing: 0px; font-family: Verdana, Geneva, sans-serif; color: #666666; padding: 10px 0 0 0; font-weight:normal; text-align: left"> It cushions and protects for a close, comfortable shave.
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td style="padding-top: 25px"
+                                                                        align="center">
+                                                                        <!--[if mso]>
+                                                                        <v:roundrect
+                                                                                xmlns:v="urn:schemas-microsoft-com:vml"
+                                                                                xmlns:w="urn:schemas-microsoft-com:office:word"
+                                                                                style="height:48px;v-text-anchor:middle;width:280px;"
+                                                                                arcsize="5%"
+                                                                                strokecolor="#E34F30"
+                                                                                fillcolor="#E34F30">
+                                                                            <w:anchorlock/>
+                                                                            <center>
+                                                                        <![endif]-->
+
+                                                                        <a class="large-cta"
+                                                                           href="http://www.harrys.com/profile/shave_plans/products/edit"
+                                                                           style="font-size: 13px; letter-spacing: 0.16em; line-height:20px; font-family: Futura, Trebuchet MS, Arial, sans-serif; color: #FFFFFF; font-weight: normal; text-decoration: none; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; background-color: #E34F30; border-top: 12px solid #E34F30; border-bottom: 12px solid #E34F30; border-right: 29px solid #E34F30; border-left: 29px solid #E34F30; display: inline-block; text-transform: uppercase">subscribe</a>
+
+                                                                        <!--[if mso]>
+                                                                        </center>
+                                                                        </v:roundrect>
+                                                                        <![endif]-->
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+
+            </table>
+        </td>
+    </tr>
+</table>
+            <!--two col end-->
+            
+
+
+            <!--add more body copy-->
+            <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+        <td align="center" style="padding: 20px 0 40px 0;">
+            <table align="center" border="0" cellpadding="0" cellspacing="0" width="480"
+                   class="responsive-table">
+                <tr>
+                    <td align="center" style="padding: 0 15px 0 15px;">
+                        <table align="center" border="0" cellpadding="0" cellspacing="0" width="480"
+                               class="responsive-table">
+
+
+                            <tr>
+                                <td align="center" class="h3-addmore-headline"
+                                    style="font-size: 26px; line-height: 42px; letter-spacing: 0.25px; font-family: Futura, Trebuchet MS, Arial, sans-serif; color: #263645; font-weight:normal; padding: 35px 0 0 0">
+                                    <a href="#" style="color: #185674; text-decoration: none;">Add more to your next box.</a>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td align="center" class="body" style="font-size: 14px; line-height: 30px; letter-spacing: 0px; font-family: Verdana, Geneva, sans-serif; color: #666666; font-weight:normal; padding: 8px 0 0 0">
+                                    <a href="#" style="color: #666666; text-decoration: none;">Make a one-time purchase that will ship in your next box.</a>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+            <!--header body copy end-->
+
+
+            <!--suggested items -->
+            <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+        <td align="center" style="padding: 0 0 0 0;">
+            <table border="0" cellpadding="0" cellspacing="0" width="800" class="responsive-table">
+                <tr>
+                    <td align="center" style="padding: 0 0 0 0;">
+
+                <tr>
+                    <td>
+                        <!-- TWO COLUMNS -->
+                        <table align="center" cellspacing="0" cellpadding="0" border="0" width="100%">
+                            <tr>
+                                <td valign="top" style="padding: 0 15px 0 15px"
+                                    class="mobile-wrapper">
+                                    <!-- LEFT COLUMN -->
+                                    
+                                    <table cellpadding="0" cellspacing="0" border="0"
+                                           width="32%" align="left" class="responsive-table">
+                                        <tr>
+                                            <td style="padding: 20px 20px 0 20px;">
+                                                <table style="background-color: white; border-radius: 6px"
+                                                       cellpadding="0" cellspacing="0"
+                                                       border="0" width="100%">
+                                                    <tr>
+                                                        <td style="padding: 10px 0 0 0"
+                                                            align="center">
+                                                            <a href="#" target="_blank"><img
+                                                                    src="https://shave-email.s3.amazonaws.com/checkout_2x.png"
+                                                                    alt=""
+                                                                    width="130" height="130"
+                                                                    style="display: block; width: 130px; height: 130px; vertical-align: center"></a>
+                                                        </td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td style="padding-top: 25px; padding-bottom: 25px "
+                                                            align="center">
+                                                            <!--[if mso]>
+                                                            <v:roundrect
+                                                                    xmlns:v="urn:schemas-microsoft-com:vml"
+                                                                    xmlns:w="urn:schemas-microsoft-com:office:word"
+                                                                    style="height:48px;v-text-anchor:middle;width:280px;"
+                                                                    arcsize="5%"
+                                                                    strokecolor="#E34F30"
+                                                                    fillcolor="#E34F30">
+                                                                <w:anchorlock/>
+                                                                <center>
+                                                            <![endif]-->
+
+                                                            <a class="large-cta"
+                                                               href="https://www.harrys.com/direct_shave_plan_one_time_additions/483" style="font-size: 13px; letter-spacing: 0.16em; line-height:20px; font-family: Futura, Trebuchet MS, Arial, sans-serif; color: #FFFFFF; font-weight: normal; text-decoration: none; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; background-color: #E34F30; border-top: 12px solid #E34F30; border-bottom: 12px solid #E34F30; border-right: 29px solid #E34F30; border-left: 29px solid #E34F30; display: inline-block; text-transform: uppercase">add</a>
+
+                                                            <!--[if mso]>
+                                                            </center>
+                                                            </v:roundrect>
+                                                            <![endif]-->
+                                                        </td>
+                                                    </tr>
+
+                                                </table>
+                                        <tr>
+                                            <td align="center" class="body"
+                                                style="font-size: 14px; line-height: 30px; letter-spacing: 0px; font-family: Verdana, Geneva, sans-serif; color: #666666; font-weight: 400; padding: 15px 0 0 0">
+                                                Truman Handle
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td align="center" class="body-suggested-items-description"
+                                                style="font-size: 14px; line-height: 30px; letter-spacing: 0px; font-family: Verdana, Geneva, sans-serif; color: #868686; font-weight:normal">
+                                                Total Orange
+                                            </td>
+                                        </tr>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    
+                                    <table cellpadding="0" cellspacing="0" border="0"
+                                           width="32%" align="left" class="responsive-table">
+                                        <tr>
+                                            <td style="padding: 20px 20px 0 20px;">
+                                                <table style="background-color: white; border-radius: 6px"
+                                                       cellpadding="0" cellspacing="0"
+                                                       border="0" width="100%">
+                                                    <tr>
+                                                        <td style="padding: 10px 0 0 0"
+                                                            align="center">
+                                                            <a href="#" target="_blank"><img
+                                                                    src="https://shave-email.s3.amazonaws.com/thumb-psb.jpg"
+                                                                    alt=""
+                                                                    width="130" height="130"
+                                                                    style="display: block; width: 130px; height: 130px; vertical-align: center"></a>
+                                                        </td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td style="padding-top: 25px; padding-bottom: 25px "
+                                                            align="center">
+                                                            <!--[if mso]>
+                                                            <v:roundrect
+                                                                    xmlns:v="urn:schemas-microsoft-com:vml"
+                                                                    xmlns:w="urn:schemas-microsoft-com:office:word"
+                                                                    style="height:48px;v-text-anchor:middle;width:280px;"
+                                                                    arcsize="5%"
+                                                                    strokecolor="#E34F30"
+                                                                    fillcolor="#E34F30">
+                                                                <w:anchorlock/>
+                                                                <center>
+                                                            <![endif]-->
+
+                                                            <a class="large-cta"
+                                                               href="https://www.harrys.com/ direct_shave_plan_one_time_additions/515" style="font-size: 13px; letter-spacing: 0.16em; line-height:20px; font-family: Futura, Trebuchet MS, Arial, sans-serif; color: #FFFFFF; font-weight: normal; text-decoration: none; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; background-color: #E34F30; border-top: 12px solid #E34F30; border-bottom: 12px solid #E34F30; border-right: 29px solid #E34F30; border-left: 29px solid #E34F30; display: inline-block; text-transform: uppercase">add</a>
+
+                                                            <!--[if mso]>
+                                                            </center>
+                                                            </v:roundrect>
+                                                            <![endif]-->
+                                                        </td>
+                                                    </tr>
+
+                                                </table>
+                                        <tr>
+                                            <td align="center" class="body"
+                                                style="font-size: 14px; line-height: 30px; letter-spacing: 0px; font-family: Verdana, Geneva, sans-serif; color: #666666; font-weight: 400; padding: 15px 0 0 0">
+                                                Post-Shave Balm
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td align="center" class="body-suggested-items-description"
+                                                style="font-size: 14px; line-height: 30px; letter-spacing: 0px; font-family: Verdana, Geneva, sans-serif; color: #868686; font-weight:normal">
+                                                Standard (3.4oz)
+                                            </td>
+                                        </tr>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    
+                                    <table cellpadding="0" cellspacing="0" border="0"
+                                           width="32%" align="left" class="responsive-table">
+                                        <tr>
+                                            <td style="padding: 20px 20px 0 20px;">
+                                                <table style="background-color: white; border-radius: 6px"
+                                                       cellpadding="0" cellspacing="0"
+                                                       border="0" width="100%">
+                                                    <tr>
+                                                        <td style="padding: 10px 0 0 0"
+                                                            align="center">
+                                                            <a href="#" target="_blank"><img
+                                                                    src="https://shave-email.s3.amazonaws.com/thumb-stand.jpg"
+                                                                    alt=""
+                                                                    width="130" height="130"
+                                                                    style="display: block; width: 130px; height: 130px; vertical-align: center"></a>
+                                                        </td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td style="padding-top: 25px; padding-bottom: 25px "
+                                                            align="center">
+                                                            <!--[if mso]>
+                                                            <v:roundrect
+                                                                    xmlns:v="urn:schemas-microsoft-com:vml"
+                                                                    xmlns:w="urn:schemas-microsoft-com:office:word"
+                                                                    style="height:48px;v-text-anchor:middle;width:280px;"
+                                                                    arcsize="5%"
+                                                                    strokecolor="#E34F30"
+                                                                    fillcolor="#E34F30">
+                                                                <w:anchorlock/>
+                                                                <center>
+                                                            <![endif]-->
+
+                                                            <a class="large-cta"
+                                                               href="https://www.harrys.com/direct_shave_plan_one_time_additions/309" style="font-size: 13px; letter-spacing: 0.16em; line-height:20px; font-family: Futura, Trebuchet MS, Arial, sans-serif; color: #FFFFFF; font-weight: normal; text-decoration: none; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; background-color: #E34F30; border-top: 12px solid #E34F30; border-bottom: 12px solid #E34F30; border-right: 29px solid #E34F30; border-left: 29px solid #E34F30; display: inline-block; text-transform: uppercase">add</a>
+
+                                                            <!--[if mso]>
+                                                            </center>
+                                                            </v:roundrect>
+                                                            <![endif]-->
+                                                        </td>
+                                                    </tr>
+
+                                                </table>
+                                        <tr>
+                                            <td align="center" class="body"
+                                                style="font-size: 14px; line-height: 30px; letter-spacing: 0px; font-family: Verdana, Geneva, sans-serif; color: #666666; font-weight: 400; padding: 15px 0 0 0">
+                                                Razor Stand
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td align="center" class="body-suggested-items-description"
+                                                style="font-size: 14px; line-height: 30px; letter-spacing: 0px; font-family: Verdana, Geneva, sans-serif; color: #868686; font-weight:normal">
+                                                Anodized aluminum
+                                            </td>
+                                        </tr>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    
+
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+
+                </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+            <!--suggested items end -->
+
+            <!--change-box copy-->
+            <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+        <td align="center" style="padding: 60px 0 40px 0;">
+            <table align="center" border="0" cellpadding="0" cellspacing="0" width="480"
+                   class="responsive-table">
+                <tr>
+                    <td align="center" style="padding: 0 15px 0 15px;">
+                        <table align="center" border="0" cellpadding="0" cellspacing="0" width="480"
+                               class="responsive-table">
+
+
+                            <tr>
+                                <td align="center" class="body-changes-description"
+                                    style="font-size: 14px; line-height: 30px; letter-spacing: 0px; font-family: Verdana, Geneva, sans-serif; color: #868686; font-weight:normal">
+                                    Want to make a change to your next box?
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td align="center" class="body-edit-description"
+                                    style="font-size: 14px; line-height: 30px; letter-spacing: 0px; font-family: Verdana, Geneva, sans-serif; color: #868686; font-weight:normal">
+                                    <a href="#" style="color: #868686; text-decoration: none;"><a style="color: #666666 " href="https://www.harrys.com/profile/shave-plans/products" target="_blank">Edit products</a> or <a style="color: #666666" href=" https://www.harrys.com/profile/shave-plans/products" target="_blank">reschedule</a> by 11:59 PM ET tomorrow.</a>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+            <!--change-box copy end-->
+
+
+            <!--save-on-order body copy-->
+            <table style="background-color: #DDE9EE" align="center" border="0" cellpadding="0" cellspacing="0"
+       width="100%">
+    <tr>
+        <td align="center" style="padding: 40px 0 40px 0;">
+            <table align="center" border="0" cellpadding="0" cellspacing="0" width="480"
+                   class="responsive-table">
+                <tr>
+                    <td align="center" style="padding: 0 15px 0 15px;">
+                        <table align="center" border="0" cellpadding="0" cellspacing="0" width="480"
+                               class="responsive-table">
+
+
+                            <tr>
+                                <td align="center" class="h2-save-order"
+                                    style="font-size: 26px; line-height: 42px; letter-spacing: 0.25px; font-family: Futura, Trebuchet MS, Arial, sans-serif; color: #263645; font-weight:normal">
+                                    This order could be $5 less
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td align="center" class="body-sign-up-description"
+                                    style="font-size: 14px; line-height: 30px; letter-spacing: 0px; font-family: Verdana, Geneva, sans-serif; color: #666666; font-weight:normal; padding: 15px 40px 30px 40px">
+                                    When a friend signs up for a trial, you'll both save $5 off your next order.
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td align="center" class="body-share-link-description"
+                                    style="font-size: 14px; line-height: 30px; letter-spacing: 0px; font-family: Verdana, Geneva, sans-serif; color: #868686; font-weight:normal; border-radius: 6px; background-color: white; padding: 20px 0 20px 0">
+                                    Share your invite link:
+                                    <br>
+                                    <a href="http://www.harrys.com/invite/xyz123ab"
+                                       style="color: #3CA6E0; text-decoration: none; padding-top: 15px">http://www.harrys.com/invite/xyz123ab</a>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td align="center" class="body"
+                                    style="font-size: 14px; line-height: 30px; letter-spacing: 0px; font-family: Verdana, Geneva, sans-serif; color: #263645; font-weight:normal; padding: 10px 0 0 0">
+                                    <a href=""
+                                       style="color: #263645; text-decoration: underline; padding-top: 15px">Learn More</a>
+                                </td>
+                            </tr>
+
+
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+            <!--hsave-on-order body copy end-->
+
+
+            <!-- US & CA FOOTER -->
+            <!-- US & CA FOOTER -->
+<table align="center" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+        <!-- Change background color -->
+        <td bgcolor="F7F7F7" align="center" style="padding: 0 20px">
+            <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                <tr>
+                    <td width="100%" height="50"
+                        style="font-size:1px; line-height:1px; mso-line-height-rule: exactly;">&nbsp;
+                    </td>
+                </tr>
+
+                <!-- MAMMOTH -->
+                <tr>
+                    <td align="center">
+                        <a href="http://harrys.com?utm_source=penpal&utm_medium=email&utm_campaign=}}">
+                            <img src="http://cdn.harrys.com/us-email/lifecycle/welcome/mammoth.png"
+                                 width="47" height="36" border="0" style="display:block;">
+                        </a>
+                    </td>
+                </tr>
+                <!-- MAMMOTH END -->
+
+                <tr>
+                    <td width="100%" height="30"
+                        style="font-size:1px; line-height:1px; mso-line-height-rule: exactly;">&nbsp;
+                    </td>
+                </tr>
+
+                <!-- NOTE -->
+                <tr>
+                    <td align="center" class="note"
+                        style="font-size: 13px; line-height: 24px; letter-spacing: 0.4px; font-family: Verdana, Geneva, sans-serif; color: #666666; font-weight:normal">
+                        <a href="mailto:help@harrys.com" style="color: #666666; text-decoration: none;">help@harrys.com</a>
+                        <br>
+                        <span class="smart-666666" style="text-decoration: none;">PO Box 566, <span
+                                style="white-space:nowrap;">New York, NY, 10014</span></span>
+                        <br>
+                        <a href="https://itunes.apple.com/app/apple-store/id990024014?pt=108215816&ct=20161010_email_footer&mt=8"
+                           style="color: #666666; text-decoration: underline;">Download the App</a> | <a
+                            href="}"
+                            style="color: #666666; text-decoration: underline;">Unsubscribe</a>
+
+                    </td>
+                </tr>
+
+                <!-- NOTE END -->
+
+                <tr>
+                    <td width="100%" height="50"
+                        style="font-size:1px; line-height:1px; mso-line-height-rule: exactly;">&nbsp;
+                    </td>
+                </tr>
+
+            </table>
+        </td>
+    </tr>
+</table>
+<!-- US & CA FOOTER END -->
+            <!-- US & CA FOOTER END -->
+
+
+            <!-- CONTAINER TABLE END -->
+        </td>
+    </tr>
+</table>
+</body>
+</html>

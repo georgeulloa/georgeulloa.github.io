@@ -1,0 +1,90 @@
+<table align="center" border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+        <td align="center" style="padding: 0 0 0 0;">
+            <table border="0" cellpadding="0" cellspacing="0" width="800" class="responsive-table">
+                <tr>
+                    <td align="center" style="padding: 0 0 0 0;">
+
+                <tr>
+                    <td>
+                        <!-- TWO COLUMNS -->
+                        <table align="center" cellspacing="0" cellpadding="0" border="0" width="100%">
+                            <tr>
+                                <td valign="top" style="padding: 0 15px 0 15px"
+                                    class="mobile-wrapper">
+                                    <!-- LEFT COLUMN -->
+                                    {% for suggested_product in site.data.shipment.suggested_products %}
+                                    <table cellpadding="0" cellspacing="0" border="0"
+                                           width="32%" align="left" class="responsive-table">
+                                        <tr>
+                                            <td style="padding: 20px 20px 0 20px;">
+                                                <table style="background-color: white; border-radius: 6px"
+                                                       cellpadding="0" cellspacing="0"
+                                                       border="0" width="100%">
+                                                    <tr>
+                                                        <td style="padding: 10px 0 0 0"
+                                                            align="center">
+                                                            <a href="#" target="_blank"><img
+                                                                    src="{{ suggested_product.image }}"
+                                                                    alt=""
+                                                                    width="130" height="130"
+                                                                    style="display: block; width: 130px; height: 130px; vertical-align: center"></a>
+                                                        </td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td style="padding-top: 25px; padding-bottom: 25px "
+                                                            align="center">
+                                                            <!--[if mso]>
+                                                            <v:roundrect
+                                                                    xmlns:v="urn:schemas-microsoft-com:vml"
+                                                                    xmlns:w="urn:schemas-microsoft-com:office:word"
+                                                                    style="height:48px;v-text-anchor:middle;width:280px;"
+                                                                    arcsize="5%"
+                                                                    strokecolor="#E34F30"
+                                                                    fillcolor="#E34F30">
+                                                                <w:anchorlock/>
+                                                                <center>
+                                                            <![endif]-->
+
+                                                            <a class="large-cta"
+                                                               href="{{ suggested_product.purchase_link }}" style="font-size: 13px; letter-spacing: 0.16em; line-height:20px; font-family: Futura, Trebuchet MS, Arial, sans-serif; color: #FFFFFF; font-weight: normal; text-decoration: none; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; background-color: #E34F30; border-top: 12px solid #E34F30; border-bottom: 12px solid #E34F30; border-right: 29px solid #E34F30; border-left: 29px solid #E34F30; display: inline-block; text-transform: uppercase">add</a>
+
+                                                            <!--[if mso]>
+                                                            </center>
+                                                            </v:roundrect>
+                                                            <![endif]-->
+                                                        </td>
+                                                    </tr>
+
+                                                </table>
+                                        <tr>
+                                            <td align="center" class="body"
+                                                style="font-size: 14px; line-height: 30px; letter-spacing: 0px; font-family: Verdana, Geneva, sans-serif; color: #666666; font-weight: 400; padding: 15px 0 0 0">
+                                                {{ suggested_product.name }}
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td align="center" class="body-suggested-items-description"
+                                                style="font-size: 14px; line-height: 30px; letter-spacing: 0px; font-family: Verdana, Geneva, sans-serif; color: #868686; font-weight:normal">
+                                                {{ suggested_product.description }}
+                                            </td>
+                                        </tr>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    {% endfor %}
+
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+
+                </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>

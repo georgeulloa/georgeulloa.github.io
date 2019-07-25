@@ -1,0 +1,403 @@
+---
+---
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Email Developer Exercise</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <style type="text/css">
+        /* CLIENT SPECIFIC STYLES */
+        #outlook a {
+            padding: 0;
+        }
+
+        .ReadMsgBody {
+            width: 100%;
+        }
+
+        .ExternalClass {
+            width: 100%;
+        }
+
+        .ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div {
+            line-height: 100%;
+        }
+
+        body, table, td, a {
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+        }
+
+        table, td {
+            mso-table-lspace: 0pt;
+            mso-table-rspace: 0pt;
+        }
+
+        img {
+            -ms-interpolation-mode: bicubic;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        img {
+            border: 0;
+            height: auto;
+            line-height: 100%;
+            outline: none;
+            text-decoration: none;
+        }
+
+        table {
+            border-collapse: collapse !important;
+        }
+
+        body {
+            height: 100% !important;
+            margin: 0;
+            padding: 0;
+            width: 100% !important;
+        }
+
+        table {
+            border-collapse: collapse;
+            margin: 0px auto;
+        }
+
+        .container {
+            min-width: 0 !important
+        }
+
+        div[style*="margin: 16px 0"] {
+            margin: 0 !important;
+        }
+
+        /* WEB FONTS */
+        @import url("//hello.myfonts.net/count/2d9b47.css");
+
+        @font-face {
+            font-family: 'Museo Sans';
+            src: url('http://cdn.harrys.com/email/webfonts/2D9B47_0_0.eot');
+            src: url('http://cdn.harrys.com/email/webfonts/2D9B47_0_0.eot?#iefix') format('embedded-opentype'), url('http://cdn.harrys.com/email/webfonts/2D9B47_0_0.woff2') format('woff2'), url('http://cdn.harrys.com/email/webfonts/2D9B47_0_0.woff') format('woff'), url('http://cdn.harrys.com/email/webfonts/2D9B47_0_0.ttf') format('truetype');
+            font-weight: bold;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Museo Sans';
+            src: url('http://cdn.harrys.com/email/webfonts/2D9B47_1_0.eot');
+            src: url('http://cdn.harrys.com/email/webfonts/2D9B47_1_0.eot?#iefix') format('embedded-opentype'), url('http://cdn.harrys.com/email/webfonts/2D9B47_1_0.woff2') format('woff2'), url('http://cdn.harrys.com/email/webfonts/2D9B47_1_0.woff') format('woff'), url('http://cdn.harrys.com/email/webfonts/2D9B47_1_0.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Museo Sans';
+            src: url('http://cdn.harrys.com/email/webfonts/2D9B47_2_0.eot');
+            src: url('http://cdn.harrys.com/email/webfonts/2D9B47_2_0.eot?#iefix') format('embedded-opentype'), url('http://cdn.harrys.com/email/webfonts/2D9B47_2_0.woff2') format('woff2'), url('http://cdn.harrys.com/email/webfonts/2D9B47_2_0.woff') format('woff'), url('http://cdn.harrys.com/email/webfonts/2D9B47_2_0.ttf') format('truetype');
+            font-weight: bold;
+            font-style: italic;
+        }
+
+        @font-face {
+            font-family: 'Museo Sans';
+            src: url('http://cdn.harrys.com/email/webfonts/2D9B47_3_0.eot');
+            src: url('http://cdn.harrys.com/email/webfonts/2D9B47_3_0.eot?#iefix') format('embedded-opentype'), url('http://cdn.harrys.com/email/webfonts/2D9B47_3_0.woff2') format('woff2'), url('http://cdn.harrys.com/email/webfonts/2D9B47_3_0.woff') format('woff'), url('http://cdn.harrys.com/email/webfonts/2D9B47_3_0.ttf') format('truetype');
+            font-weight: normal;
+            font-style: italic;
+        }
+
+        @font-face {
+            font-family: 'Brandon Grotesque';
+            src: url('http://cdn.harrys.com/email/webfonts/3083F9_2_0.eot');
+            src: url('http://cdn.harrys.com/email/webfonts/3083F9_2_0.eot?#iefix') format('embedded-opentype'), url('http://cdn.harrys.com/email/webfonts/3083F9_2_0.woff2') format('woff2'), url('http://cdn.harrys.com/email/webfonts/3083F9_2_0.woff') format('woff'), url('http://cdn.harrys.com/email/webfonts/3083F9_2_0.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Brandon Grotesque';
+            src: url('http://cdn.harrys.com/email/webfonts/2D9B47_6_0.eot');
+            src: url('http://cdn.harrys.com/email/webfonts/2D9B47_6_0.eot?#iefix') format('embedded-opentype'), url('http://cdn.harrys.com/email/webfonts/2D9B47_6_0.woff2') format('woff2'), url('http://cdn.harrys.com/email/webfonts/2D9B47_6_0.woff') format('woff'), url('http://cdn.harrys.com/email/webfonts/2D9B47_6_0.ttf') format('truetype');
+            font-weight: bold;
+            font-style: normal;
+        }
+
+        @media screen and (-webkit-min-device-pixel-ratio: 0) {
+
+            .h1, .h1 a {
+                font-family: 'Brandon Grotesque', Futura, Trebuchet MS, Arial, sans-serif !important;
+                font-size: 36px !important;
+                line-height: 52px !important;
+                letter-spacing: 1.25px !important;
+                font-weight: normal !important;
+            }
+
+            .h2, .h2 a {
+                font-family: 'Brandon Grotesque', Futura, Trebuchet MS, Arial, sans-serif !important;
+                font-size: 28px !important;
+                line-height: 42px !important;
+                letter-spacing: 1px !important;
+                font-weight: normal !important;
+            }
+
+            .h3, .h3 a {
+                font-family: 'Brandon Grotesque', Futura, Trebuchet MS, Arial, sans-serif !important;
+                font-size: 24px !important;
+                line-height: 36px !important;
+                letter-spacing: 1.25px !important;
+                font-weight: normal !important;
+            }
+
+            .subheader, .subheader a {
+                font-family: 'Brandon Grotesque', Futura, Trebuchet MS, Arial, sans-serif !important;
+                font-size: 12px !important;
+                line-height: 24px !important;
+                letter-spacing: 2.3px !important;
+                font-weight: bold !important;
+            }
+
+            .body, .body a {
+                font-family: 'Museo Sans', Verdana, Geneva, sans-serif !important;
+                font-size: 15px !important;
+                line-height: 28px !important;
+                letter-spacing: 0.75px !important;
+            }
+
+            .note, .note a {
+                font-family: 'Museo Sans', Verdana, Geneva, sans-serif !important;
+                letter-spacing: 0.4px !important;
+            }
+
+            .large-cta, .large-cta a {
+                font-family: 'Brandon Grotesque', Futura, Trebuchet MS, Arial, sans-serif !important;
+                font-size: 14px !important;
+                letter-spacing: 2px !important;
+                border-top-width: 14px !important;
+                border-bottom-width: 10px !important;
+                border-right-width: 30px !important;
+                border-left-width: 30px !important;
+                font-weight: bold !important;
+            }
+
+        }
+
+        /* APPLE BLUE LINKS */
+        .smart-666666 a {
+            color: #666666 !important;
+            text-decoration: none !important;
+        }
+
+        /* MEDIA QUERY SCREEN 579px */
+        @media screen and (max-width: 579px), screen and (max-device-width: 579px) {
+            .full-table {
+                width: 100% !important;
+                min-width: 0 !important;
+                height: auto !important;
+            }
+
+            .h2 {
+                text-align: center !important;
+                padding: 0 40px !important;
+            }
+
+            .h2-save-order {
+                text-align: center !important;
+                padding: 0 20px !important;
+            }
+
+            .h3 {
+                text-align: center !important;
+                padding: 0 80px !important;
+            }
+
+            .h3-addmore-headline {
+                text-align: center !important;
+                padding: 40px 0 0 0 !important;
+            }
+
+
+            .body {
+                text-align: center !important;
+                padding: 10px 30px 0 30px !important;
+            }
+
+            .body-suggested-items-description {
+                text-align: center !important;
+                padding: 0 30px 0  30px !important;
+            }
+
+            .body-sign-up-description {
+                text-align: center !important;
+                padding: 0 30px 30px  30px !important;
+            }
+
+            .body-edit-description {
+                text-align: center !important;
+                padding: 0 0 0 0 !important;
+            }
+
+            .body-share-link-description {
+                text-align: center !important;
+                padding: 20px 0 20px 0 !important;
+            }
+
+            .note {
+                text-align: center !important;
+                padding: 0 40px 10px 40px;
+            }
+
+        }
+
+        /*adding responsive styles*/
+        /* MOBILE STYLES */
+        @media screen and (max-width: 579px) {
+
+            img[class="img-max"] {
+                max-width: 100% !important;
+                width: 100% !important;
+                height: auto !important;
+            }
+
+            table[class="responsive-table"] {
+                width: 100% !important;
+            }
+
+            td[class="section-padding"] {
+                padding: 50px 15px 50px 15px !important;
+            }
+
+            table[class="mobile-button-container"] {
+                margin: 0 auto;
+                width: 100% !important;
+            }
+
+            a[class="mobile-button"] {
+                width: 80% !important;
+                padding: 15px !important;
+                border: 0 !important;
+                font-size: 16px !important;
+            }
+
+            td[class="text-center"] {
+                text-align: center !important;
+            }
+
+            td[class="logo-container"],
+            td[class="nav-container"] {
+                padding-left: 15px !important;
+                padding-right: 15px !important;
+            }
+
+            td[class="divider-pad"] {
+                padding-left: 15px !important;
+                padding-right: 15px !important;
+            }
+
+            a[class="cta-button"] {
+                width: 75% !important;
+            }
+
+            td[class="mobile-no-padding-bottom"] {
+                padding-bottom: 0 !important;
+            }
+
+            td[class="mobile-no-padding"] {
+                padding: 0 !important;
+            }
+
+        }
+
+        /*adding responsive style*/
+
+    </style>
+</head>
+
+
+<body bgcolor="#F7F7F7"
+      style="-webkit-font-smoothing: antialiased; width:100% !important; background:#F7F7F7;-webkit-text-size-adjust:none; margin:0; padding:0; min-width:100%">
+
+<!-- PREHEADER TEXT -->
+<span style="display: none !important; color: #FFFFFF; margin:0; padding:0; font-size:1px; line-height:1px;">
+  We hope you're enjoying shaving with Harry's. We’ll be shipping your fresh supplies in a couple of days. Remember, your Shave Plan guarantees you're getting the best savings on Harry's supplies - plus free shipping, always.
+</span>
+
+<!-- CONTAINER TABLE -->
+<table class="container" border="0" cellpadding="0" cellspacing="0" width="100%" style="min-width: 580px;">
+    <tr>
+        <td>
+
+            <!-- header-logo -->
+            {% include header-logo.html %}
+            <!-- header-logo END -->
+
+
+            <!-- hero-image -->
+            {% include hero-image.html %}
+            <!-- hero-image end -->
+
+            <!--ship-info copy-->
+            {% include ship-info.html %}
+            <!--ship-info copy end-->
+
+
+            {% for product in site.data.shipment.order.products %}
+            <!--shipped-products-->
+                {% include shipped-products.html %}
+            <!--shipped-products end-->
+            {% endfor %}
+
+
+            <!--shipping-cost-->
+            {% include shipping-cost.html %}
+            <!--shipping-cost end-->
+
+            {% assign has_shave_gel = false %}
+            {% for product in site.data.shipment.order.products %}
+                {% if product.name == 'Shave Gel' %}
+                    {% assign has_shave_gel = true %}
+                    {% break %}
+                {% endif %}
+            {% endfor %}
+
+            {% if has_shave_gel == false %}
+            <!--two col for suggested subscription -->
+                {% include suggested-sub.html %}
+            <!--two col end-->
+            {% endif %}
+
+
+            <!--add more body copy-->
+            {% include add-more.html %}
+            <!--header body copy end-->
+
+
+            <!--suggested items -->
+            {% include suggested-items.html %}
+            <!--suggested items end -->
+
+            <!--change-box copy-->
+            {% include change-box.html %}
+            <!--change-box copy end-->
+
+
+            <!--save-on-order body copy-->
+            {% include save-on-order.html %}
+            <!--hsave-on-order body copy end-->
+
+
+            <!-- US & CA FOOTER -->
+            {% include footer.html %}
+            <!-- US & CA FOOTER END -->
+
+
+            <!-- CONTAINER TABLE END -->
+        </td>
+    </tr>
+</table>
+</body>
+</html>

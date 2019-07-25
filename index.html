@@ -1,135 +1,69 @@
----
----
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Email Developer Exercise</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta charset="utf-8"> <!-- utf-8 works for most cases -->
+    <meta name="viewport" content="width=device-width"> <!-- Forcing initial-scale shouldn't be necessary -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- Use the latest (edge) version of IE rendering engine -->
+    <meta name="x-apple-disable-message-reformatting">  <!-- Disable auto-scale in iOS 10 Mail entirely -->
+    <meta name="format-detection" content="telephone=no"> <!-- Disables auto linking telephone where its supported -->
+    <meta name="format-detection" content="date=no"> <!-- Disables auto linking date where its supported -->
+    <meta name="format-detection" content="address=no"> <!-- Disables auto linking address where its supported -->
+    <title>Harry's</title> <!-- The title tag shows in email notifications, like Android 4.4. -->
     <style type="text/css">
         /* CLIENT SPECIFIC STYLES */
-        #outlook a {
-            padding: 0;
-        }
-
-        .ReadMsgBody {
-            width: 100%;
-        }
-
-        .ExternalClass {
-            width: 100%;
-        }
-
-        .ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div {
-            line-height: 100%;
-        }
-
-        body, table, td, a {
-            -webkit-text-size-adjust: 100%;
-            -ms-text-size-adjust: 100%;
-        }
-
-        table, td {
-            mso-table-lspace: 0pt;
-            mso-table-rspace: 0pt;
-        }
-
-        img {
-            -ms-interpolation-mode: bicubic;
-        }
-
-        body {
-            margin: 0;
-            padding: 0;
-        }
-
-        img {
-            border: 0;
-            height: auto;
-            line-height: 100%;
-            outline: none;
-            text-decoration: none;
-        }
-
-        table {
-            border-collapse: collapse !important;
-        }
-
-        body {
-            height: 100% !important;
-            margin: 0;
-            padding: 0;
-            width: 100% !important;
-        }
-
-        table {
-            border-collapse: collapse;
-            margin: 0px auto;
-        }
-
-        .container {
-            min-width: 0 !important
-        }
-
-        div[style*="margin: 16px 0"] {
-            margin: 0 !important;
-        }
+        #outlook a{padding:0;}
+        .ReadMsgBody{width:100%;} .ExternalClass{width:100%;}
+        .ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div {line-height: 100%;}
+        body, table, td, a{-webkit-text-size-adjust:100%; -ms-text-size-adjust:100%;}
+        table, td{mso-table-lspace:0pt; mso-table-rspace:0pt;}
+        img{-ms-interpolation-mode:bicubic;}
+        body{margin:0; padding:0;}
+        img{border:0; height:auto; line-height:100%; outline:none; text-decoration:none;}
+        table{border-collapse:collapse !important;}
+        body{height:100% !important; margin:0; padding:0; width:100% !important;}
+        table {border-collapse: collapse; margin: 0px auto;}
+        .container {min-width: 0 !important}
+        div[style*="margin: 16px 0"] { margin:0 !important; }
 
         /* WEB FONTS */
         @import url("//hello.myfonts.net/count/2d9b47.css");
 
-        @font-face {
-            font-family: 'Museo Sans';
-            src: url('http://cdn.harrys.com/email/webfonts/2D9B47_0_0.eot');
-            src: url('http://cdn.harrys.com/email/webfonts/2D9B47_0_0.eot?#iefix') format('embedded-opentype'), url('http://cdn.harrys.com/email/webfonts/2D9B47_0_0.woff2') format('woff2'), url('http://cdn.harrys.com/email/webfonts/2D9B47_0_0.woff') format('woff'), url('http://cdn.harrys.com/email/webfonts/2D9B47_0_0.ttf') format('truetype');
-            font-weight: bold;
-            font-style: normal;
-        }
 
-        @font-face {
-            font-family: 'Museo Sans';
-            src: url('http://cdn.harrys.com/email/webfonts/2D9B47_1_0.eot');
-            src: url('http://cdn.harrys.com/email/webfonts/2D9B47_1_0.eot?#iefix') format('embedded-opentype'), url('http://cdn.harrys.com/email/webfonts/2D9B47_1_0.woff2') format('woff2'), url('http://cdn.harrys.com/email/webfonts/2D9B47_1_0.woff') format('woff'), url('http://cdn.harrys.com/email/webfonts/2D9B47_1_0.ttf') format('truetype');
-            font-weight: normal;
-            font-style: normal;
-        }
+        @font-face {font-family: 'Museo Sans';src: url('http://cdn.harrys.com/email/webfonts/2D9B47_0_0.eot');src: url('http://cdn.harrys.com/email/webfonts/2D9B47_0_0.eot?#iefix') format('embedded-opentype'),url('http://cdn.harrys.com/email/webfonts/2D9B47_0_0.woff2') format('woff2'),url('http://cdn.harrys.com/email/webfonts/2D9B47_0_0.woff') format('woff'),url('http://cdn.harrys.com/email/webfonts/2D9B47_0_0.ttf') format('truetype');font-weight: bold;font-style: normal;}
 
-        @font-face {
-            font-family: 'Museo Sans';
-            src: url('http://cdn.harrys.com/email/webfonts/2D9B47_2_0.eot');
-            src: url('http://cdn.harrys.com/email/webfonts/2D9B47_2_0.eot?#iefix') format('embedded-opentype'), url('http://cdn.harrys.com/email/webfonts/2D9B47_2_0.woff2') format('woff2'), url('http://cdn.harrys.com/email/webfonts/2D9B47_2_0.woff') format('woff'), url('http://cdn.harrys.com/email/webfonts/2D9B47_2_0.ttf') format('truetype');
-            font-weight: bold;
-            font-style: italic;
-        }
+        @font-face {font-family: 'Museo Sans';src: url('http://cdn.harrys.com/email/webfonts/2D9B47_1_0.eot');src: url('http://cdn.harrys.com/email/webfonts/2D9B47_1_0.eot?#iefix') format('embedded-opentype'),url('http://cdn.harrys.com/email/webfonts/2D9B47_1_0.woff2') format('woff2'),url('http://cdn.harrys.com/email/webfonts/2D9B47_1_0.woff') format('woff'),url('http://cdn.harrys.com/email/webfonts/2D9B47_1_0.ttf') format('truetype');font-weight: normal;font-style: normal;}
 
-        @font-face {
-            font-family: 'Museo Sans';
-            src: url('http://cdn.harrys.com/email/webfonts/2D9B47_3_0.eot');
-            src: url('http://cdn.harrys.com/email/webfonts/2D9B47_3_0.eot?#iefix') format('embedded-opentype'), url('http://cdn.harrys.com/email/webfonts/2D9B47_3_0.woff2') format('woff2'), url('http://cdn.harrys.com/email/webfonts/2D9B47_3_0.woff') format('woff'), url('http://cdn.harrys.com/email/webfonts/2D9B47_3_0.ttf') format('truetype');
-            font-weight: normal;
-            font-style: italic;
-        }
+        @font-face {font-family: 'Museo Sans';src: url('http://cdn.harrys.com/email/webfonts/2D9B47_2_0.eot');src: url('http://cdn.harrys.com/email/webfonts/2D9B47_2_0.eot?#iefix') format('embedded-opentype'),url('http://cdn.harrys.com/email/webfonts/2D9B47_2_0.woff2') format('woff2'),url('http://cdn.harrys.com/email/webfonts/2D9B47_2_0.woff') format('woff'),url('http://cdn.harrys.com/email/webfonts/2D9B47_2_0.ttf') format('truetype');font-weight: bold;font-style: italic;}
 
-        @font-face {
-            font-family: 'Brandon Grotesque';
-            src: url('http://cdn.harrys.com/email/webfonts/3083F9_2_0.eot');
-            src: url('http://cdn.harrys.com/email/webfonts/3083F9_2_0.eot?#iefix') format('embedded-opentype'), url('http://cdn.harrys.com/email/webfonts/3083F9_2_0.woff2') format('woff2'), url('http://cdn.harrys.com/email/webfonts/3083F9_2_0.woff') format('woff'), url('http://cdn.harrys.com/email/webfonts/3083F9_2_0.ttf') format('truetype');
-            font-weight: normal;
-            font-style: normal;
-        }
+        @font-face {font-family: 'Museo Sans';src: url('http://cdn.harrys.com/email/webfonts/2D9B47_3_0.eot');src: url('http://cdn.harrys.com/email/webfonts/2D9B47_3_0.eot?#iefix') format('embedded-opentype'),url('http://cdn.harrys.com/email/webfonts/2D9B47_3_0.woff2') format('woff2'),url('http://cdn.harrys.com/email/webfonts/2D9B47_3_0.woff') format('woff'),url('http://cdn.harrys.com/email/webfonts/2D9B47_3_0.ttf') format('truetype');font-weight: normal;font-style: italic;}
 
-        @font-face {
-            font-family: 'Brandon Grotesque';
-            src: url('http://cdn.harrys.com/email/webfonts/2D9B47_6_0.eot');
-            src: url('http://cdn.harrys.com/email/webfonts/2D9B47_6_0.eot?#iefix') format('embedded-opentype'), url('http://cdn.harrys.com/email/webfonts/2D9B47_6_0.woff2') format('woff2'), url('http://cdn.harrys.com/email/webfonts/2D9B47_6_0.woff') format('woff'), url('http://cdn.harrys.com/email/webfonts/2D9B47_6_0.ttf') format('truetype');
-            font-weight: bold;
-            font-style: normal;
-        }
+        @font-face {font-family: 'Brandon Grotesque';src: url('http://cdn.harrys.com/email/webfonts/3083F9_2_0.eot');src: url('http://cdn.harrys.com/email/webfonts/3083F9_2_0.eot?#iefix') format('embedded-opentype'),url('http://cdn.harrys.com/email/webfonts/3083F9_2_0.woff2') format('woff2'),url('http://cdn.harrys.com/email/webfonts/3083F9_2_0.woff') format('woff'),url('http://cdn.harrys.com/email/webfonts/3083F9_2_0.ttf') format('truetype');font-weight: normal;font-style: normal;}
+
+        @font-face {font-family: 'Brandon Grotesque';src: url('http://cdn.harrys.com/email/webfonts/2D9B47_6_0.eot');src: url('http://cdn.harrys.com/email/webfonts/2D9B47_6_0.eot?#iefix') format('embedded-opentype'),url('http://cdn.harrys.com/email/webfonts/2D9B47_6_0.woff2') format('woff2'),url('http://cdn.harrys.com/email/webfonts/2D9B47_6_0.woff') format('woff'),url('http://cdn.harrys.com/email/webfonts/2D9B47_6_0.ttf') format('truetype'); font-weight: bold;font-style: normal;}
+
 
         @media screen and (-webkit-min-device-pixel-ratio: 0) {
 
-            .h1, .h1 a {
+            /* TARGET THOSE THAT SUPPORT WEBKIT */
+            .webkit{
+                display: block!important;
+            }
+
+            /* TARGET THOSE THAT DOES NOT SUPPORT WEBKIT */
+            .non-webkit{
+                display: none!important;
+            }
+
+            /* TARGET OUTLOOK.COM */
+            [class="x_non-webkit"]{
+                display: block!important;
+            }
+
+            [class="x_webkit"]{
+                display: none!important;
+            }
+
+            .h1, .h1 a{
                 font-family: 'Brandon Grotesque', Futura, Trebuchet MS, Arial, sans-serif !important;
                 font-size: 36px !important;
                 line-height: 52px !important;
@@ -137,7 +71,7 @@
                 font-weight: normal !important;
             }
 
-            .h2, .h2 a {
+            .h2, .h2 a{
                 font-family: 'Brandon Grotesque', Futura, Trebuchet MS, Arial, sans-serif !important;
                 font-size: 28px !important;
                 line-height: 42px !important;
@@ -145,7 +79,7 @@
                 font-weight: normal !important;
             }
 
-            .h3, .h3 a {
+            .h3, .h3 a{
                 font-family: 'Brandon Grotesque', Futura, Trebuchet MS, Arial, sans-serif !important;
                 font-size: 24px !important;
                 line-height: 36px !important;
@@ -153,7 +87,7 @@
                 font-weight: normal !important;
             }
 
-            .subheader, .subheader a {
+            .subheader, .subheader a{
                 font-family: 'Brandon Grotesque', Futura, Trebuchet MS, Arial, sans-serif !important;
                 font-size: 12px !important;
                 line-height: 24px !important;
@@ -161,243 +95,809 @@
                 font-weight: bold !important;
             }
 
-            .body, .body a {
+            .body, .body a{
                 font-family: 'Museo Sans', Verdana, Geneva, sans-serif !important;
-                font-size: 15px !important;
+                font-size: 16px !important;
                 line-height: 28px !important;
                 letter-spacing: 0.75px !important;
+                font-weight: 500!important;
+                font-style: normal!important;
             }
 
-            .note, .note a {
+            .note, .note a{
                 font-family: 'Museo Sans', Verdana, Geneva, sans-serif !important;
                 letter-spacing: 0.4px !important;
             }
 
-            .large-cta, .large-cta a {
+            .large-cta, .large-cta a{
                 font-family: 'Brandon Grotesque', Futura, Trebuchet MS, Arial, sans-serif !important;
-                font-size: 14px !important;
+                font-size: 16px !important;
                 letter-spacing: 2px !important;
                 border-top-width: 14px !important;
                 border-bottom-width: 10px !important;
-                border-right-width: 30px !important;
-                border-left-width: 30px !important;
+                border-right-width: 25px !important;
+                border-left-width: 25px !important;
                 font-weight: bold !important;
             }
 
         }
 
         /* APPLE BLUE LINKS */
-        .smart-666666 a {
-            color: #666666 !important;
-            text-decoration: none !important;
-        }
+        .smart-666666 a {color:#666666 !important; text-decoration: none !important;}
+        .smart-868686 a {color:#868686 !important; text-decoration: none !important;}
+        .smart-BFBFBF a {color:#BFBFBF !important; text-decoration: none !important;}
+        .smart-185674 a {color:#185674 !important; text-decoration: none !important;}
+        .smart-263645 a {color:#263645 !important; text-decoration: none !important;}
+        .smart-FFFFFF a {color:#FFFFFF !important; text-decoration: none !important;}
 
         /* MEDIA QUERY SCREEN 579px */
         @media screen and (max-width: 579px), screen and (max-device-width: 579px) {
-            .full-table {
+
+            /* CLIENT SPECIFIC STYLES */
+            /* TARGT OUTLOOK APP ON IOS AND ANDROID */
+            body[data-outlook-cycle] .webkit {
+                display: none !important
+            }
+            body[data-outlook-cycle] .non-webkit {
+                display: block !important;
+            }
+
+
+            u + .body-tag .container {
+                width:100% !important;
+                width:100vw !important;
+            }
+
+            table[class="container"] {
                 width: 100% !important;
+            }
+
+
+            .full-table {
+                width:100%!important;
                 min-width: 0 !important;
+                height:auto !important;
+            }
+
+            .mobile-hide{
+                height: 1px !important;
+                display: none !important;
+                min-width:inherit !important;
+            }
+
+            .mobile-show {
+                display:block !important;
+                width:100% !important;
+                min-width: 100% !important;
+                height:auto !important;
+            }
+
+            .hero img{
+                width: 100% !important;
                 height: auto !important;
             }
 
-            .h2 {
-                text-align: center !important;
-                padding: 0 40px !important;
+            .mobile-column{
+                height:auto !important;
+                padding: 0 !important;
             }
 
-            .h2-save-order {
+            .mobile-column td{
                 text-align: center !important;
                 padding: 0 20px !important;
             }
 
-            .h3 {
-                text-align: center !important;
-                padding: 0 80px !important;
+            .head {display:table-header-group!important; width:100%!important;}
+            .foot {display:table-footer-group!important; width:100%!important;}
+
+            .mobile_header_padding{
+                padding-top:40px!important;
+                padding-bottom:25px!important;
+            }
+            .mobile_cta_padding{
+                padding-top:25px!important;
+            }
+            .mobile_module_padding{
+                padding-top:30px!important;
+                padding-bottom:40px!important;
+            }
+            .mobile-column td.module_subheader{
+                padding-top:20px!important;
+                padding-bottom: 10px!important;
+            }
+            .mobile-column td.module_body{
+                padding-bottom: 20px!important;
             }
 
-            .h3-addmore-headline {
-                text-align: center !important;
-                padding: 40px 0 0 0 !important;
-            }
 
 
-            .body {
-                text-align: center !important;
-                padding: 10px 30px 0 30px !important;
-            }
 
-            .body-suggested-items-description {
-                text-align: center !important;
-                padding: 0 30px 0  30px !important;
-            }
 
-            .body-sign-up-description {
-                text-align: center !important;
-                padding: 0 30px 30px  30px !important;
-            }
 
-            .body-edit-description {
-                text-align: center !important;
-                padding: 0 0 0 0 !important;
-            }
-
-            .body-share-link-description {
-                text-align: center !important;
-                padding: 20px 0 20px 0 !important;
-            }
-
-            .note {
-                text-align: center !important;
-                padding: 0 40px 10px 40px;
-            }
 
         }
-
-        /*adding responsive styles*/
-        /* MOBILE STYLES */
-        @media screen and (max-width: 579px) {
-
-            img[class="img-max"] {
-                max-width: 100% !important;
-                width: 100% !important;
-                height: auto !important;
-            }
-
-            table[class="responsive-table"] {
-                width: 100% !important;
-            }
-
-            td[class="section-padding"] {
-                padding: 50px 15px 50px 15px !important;
-            }
-
-            table[class="mobile-button-container"] {
-                margin: 0 auto;
-                width: 100% !important;
-            }
-
-            a[class="mobile-button"] {
-                width: 80% !important;
-                padding: 15px !important;
-                border: 0 !important;
-                font-size: 16px !important;
-            }
-
-            td[class="text-center"] {
-                text-align: center !important;
-            }
-
-            td[class="logo-container"],
-            td[class="nav-container"] {
-                padding-left: 15px !important;
-                padding-right: 15px !important;
-            }
-
-            td[class="divider-pad"] {
-                padding-left: 15px !important;
-                padding-right: 15px !important;
-            }
-
-            a[class="cta-button"] {
-                width: 75% !important;
-            }
-
-            td[class="mobile-no-padding-bottom"] {
-                padding-bottom: 0 !important;
-            }
-
-            td[class="mobile-no-padding"] {
-                padding: 0 !important;
-            }
-
-        }
-
-        /*adding responsive style*/
 
     </style>
+
+
+    <style type="text/css">
+        @charset "UTF-8";
+        /* CSS Document */
+        * { -webkit-text-size-adjust:none; }
+
+        * {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        [owa] .hideme {
+            display: none !important;
+        }
+
+        #carousel {
+            display: block !important;
+            max-height: inherit !important;
+            line-height: inherit !important;
+            font-size: inherit !important;
+            overflow: visible !important;
+            background-color: #FFFFFF;
+        }
+
+
+        #wyleiFallback {
+            display: none !important;
+        }
+
+        #slider1 {
+            height: 684px;
+            box-sizing: border-box;
+        }
+        .csslider {
+            width: 580px;
+            display: block;
+            /*text-align: left;*/
+            position: relative;
+            overflow: hidden;
+            background-color: #2E978F;
+        }
+
+        .csslider > input {
+            display: none;
+        }
+
+        .csslider > ul {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            font-size: 0;
+            line-height: 0;
+            margin: 0 auto;
+            padding: 0;
+            white-space: nowrap;
+            -moz-box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            border: none;
+            overflow: hidden;
+        }
+
+        .csslider img {
+            width: 100%;
+            height: auto;
+        }
+
+        .csslider > ul > li {
+            position: relative;
+            left:0;
+            padding:0;
+            margin:0;
+            display: inline-block;
+            width: 100%;
+            height: auto;
+            overflow: hidden;
+            vertical-align: top;
+            -moz-box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            white-space: normal;
+            z-index: 2;
+            -webkit-transition-duration: .5s;
+            transition-duration: .5s;
+            -webkit-transition-property: all;
+            transition-property: all;
+            -webkit-transition-timing-function: ease-in-out;
+            transition-timing-function: ease-in-out;
+        }
+        .csslider > ul > li.scrollable {
+            overflow-y: scroll;
+        }
+        .csslider > .navigation {
+            position: absolute;
+            top: 320px;
+            left: 50%;
+            width: 100%;
+            text-align: center;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        .csslider > .navigation > div {
+            margin-left: -100%;
+        }
+        .csslider > .navigation label {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+            margin-right: 20px;
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            width: 96px;
+            height: 96px;
+        }
+        .csslider > .navigation label:last-child {
+            margin-right: 0;
+        }
+
+        .csslider > .navigation label:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 96px;
+            height: 96px;
+            z-index: 2;
+        }
+        .thumb {
+            line-height: 14px;
+            font-size: 14px;
+            text-align:center;
+            position: relative;
+        }
+
+        .thumbLabel {
+            position: absolute;
+            text-align:left;
+            width: 92px;
+            top: 105px;
+            left: 6px;
+            font-family: Arial, sans-serif;
+            font-size: 11px;
+            color: #ffffff;
+        }
+
+        .thumb0 {
+            background: url(http://cdn.harrys.com/email/one-off/190513_trimmer_blades/btn_icon_sideburn.jpg);
+            background-size: contain;
+        }
+        .thumb1 {
+            background: url(http://cdn.harrys.com/email/one-off/190513_trimmer_blades/btn_icon_eyebrow.jpg);
+            background-size: contain;
+        }
+        .thumb2 {
+            background: url(http://cdn.harrys.com/email/one-off/190513_trimmer_blades/btn_icon_beard.jpg);
+            background-size: contain;
+        }
+
+
+        .csslider > .arrows {
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        .csslider.inside .navigation {
+            bottom: 10px;
+            margin-bottom: 10px;
+        }
+        .csslider.inside .navigation label {
+            border: 1px solid #7e7e7e;
+        }
+        .csslider > input:nth-of-type(1):checked ~ .navigation label:nth-of-type(1):after,
+        .csslider > input:nth-of-type(2):checked ~ .navigation label:nth-of-type(2):after,
+        .csslider > input:nth-of-type(3):checked ~ .navigation label:nth-of-type(3):after,
+        .csslider > input:nth-of-type(4):checked ~ .navigation label:nth-of-type(4):after,
+        .csslider > input:nth-of-type(5):checked ~ .navigation label:nth-of-type(5):after,
+        .csslider > input:nth-of-type(6):checked ~ .navigation label:nth-of-type(6):after,
+        .csslider > input:nth-of-type(7):checked ~ .navigation label:nth-of-type(7):after,
+        .csslider > input:nth-of-type(8):checked ~ .navigation label:nth-of-type(8):after,
+        .csslider > input:nth-of-type(9):checked ~ .navigation label:nth-of-type(9):after,
+        .csslider > input:nth-of-type(10):checked ~ .navigation label:nth-of-type(10):after,
+        .csslider > input:nth-of-type(11):checked ~ .navigation label:nth-of-type(11):after {
+            opacity: 0;
+        }
+
+        /*.csslider > input:nth-of-type(1):checked ~ .navigation label.thumb0{*/
+        /*    background: url(http://cdn.harrys.com/email/one-off/190513_trimmer_blades/btn_icon_sideburn_selected.jpg);*/
+        /*    background-size: contain;*/
+        /*}*/
+        /*.csslider > input:nth-of-type(2):checked ~ .navigation label.thumb1{*/
+        /*    background: url(http://cdn.harrys.com/email/one-off/190513_trimmer_blades/btn_icon_eyebrow_selected.jpg);*/
+        /*    background-size: contain;*/
+        /*}*/
+        /*.csslider > input:nth-of-type(3):checked ~ .navigation label.thumb2{*/
+        /*    background: url(http://cdn.harrys.com/email/one-off/190513_trimmer_blades/btn_icon_beard_selected.jpg);*/
+        /*    background-size: contain;*/
+        /*}*/
+
+
+        /*this controls positioning*/
+        .csslider > .arrows {
+            position: absolute;
+            left: 20px;
+            top: 370px;
+            width: 540px;
+            height: 46px;
+            padding: 0 0;
+            z-index: 10;
+            -moz-box-sizing: content-box;
+            -webkit-box-sizing: content-box;
+            box-sizing: content-box;
+        }
+        .csslider > .arrows label {
+            display: none;
+            position: absolute;
+            top: -50%;
+            height: 84px;
+            width: 57px;
+        }
+
+        .csslider > .arrows label:before {
+            content: '';
+            position: absolute;
+            top: -100%;
+            left: -100%;
+            height: 300%;
+            width: 300%;
+        }
+        /*new slider css*/
+        .csslider > input:nth-of-type(1):checked ~ .arrows > label:nth-of-type(0),
+        .csslider > input:nth-of-type(2):checked ~ .arrows > label:nth-of-type(1),
+        .csslider > input:nth-of-type(3):checked ~ .arrows > label:nth-of-type(2) {
+            display: block;
+            left: 0;
+            right: auto;
+            background: url(https://s3.amazonaws.com/com.harrys.production.email-assets-cdn/email/one-off/190723_hair-style/buttons/minus-desktop-2.png);
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        .csslider > input:nth-of-type(1):checked ~ .arrows > label:nth-of-type(2),
+        .csslider > input:nth-of-type(2):checked ~ .arrows > label:nth-of-type(3) {
+            display: block;
+            right: 0;
+            left: auto;
+            background: url(https://s3.amazonaws.com/com.harrys.production.email-assets-cdn/email/one-off/190723_hair-style/buttons/plus-desktop-2.png);
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+
+
+
+
+
+
+
+        @media screen and (max-width: 579px), screen and (max-device-width: 579px) {
+
+            .carouselWrapper {
+                width: 375px !important;
+                margin: auto !important;
+            }
+
+
+            #slider1 {
+                padding: 30px 0 0 !important;
+                box-sizing: border-box !important;
+                height: 536px !important;
+            }
+            .csslider {
+                width: 255px !important;
+                display: block !important;
+                text-align: left !important;
+                position: relative !important;
+                overflow: hidden !important;
+            }
+
+            .csslider > .arrows {
+                position: absolute !important;
+                left: 20px !important;
+                top: 115px !important;
+                width: 335px !important;
+                height: 30px !important;
+                padding: 0 !important;
+                z-index: 10 !important;
+                -moz-box-sizing: content-box !important;
+                -webkit-box-sizing: content-box !important;
+                box-sizing: content-box !important;
+            }
+            .csslider > .arrows label {
+                display: none !important;
+                position: absolute !important;
+                top: -50% !important;
+                height: 60px !important;
+                width: 43px !important;
+            }
+
+
+            .csslider.infinity > input:first-of-type:checked ~ .arrows label.goto-last,
+            .csslider > input:nth-of-type(1):checked ~ .arrows > label:nth-of-type(0),
+            .csslider > input:nth-of-type(2):checked ~ .arrows > label:nth-of-type(1),
+            .csslider > input:nth-of-type(3):checked ~ .arrows > label:nth-of-type(2),
+            .csslider > input:nth-of-type(4):checked ~ .arrows > label:nth-of-type(3),
+            .csslider > input:nth-of-type(5):checked ~ .arrows > label:nth-of-type(4),
+            .csslider > input:nth-of-type(6):checked ~ .arrows > label:nth-of-type(5),
+            .csslider > input:nth-of-type(7):checked ~ .arrows > label:nth-of-type(6),
+            .csslider > input:nth-of-type(8):checked ~ .arrows > label:nth-of-type(7),
+            .csslider > input:nth-of-type(9):checked ~ .arrows > label:nth-of-type(8),
+            .csslider > input:nth-of-type(10):checked ~ .arrows > label:nth-of-type(9),
+            .csslider > input:nth-of-type(11):checked ~ .arrows > label:nth-of-type(10) {
+                display: block !important;
+                left: 0 !important;
+                right: auto !important;
+                background-size: 34px!important;
+                background-position: center left !important;
+                background-repeat: no-repeat !important;
+            }
+            .csslider.infinity > input:last-of-type:checked ~ .arrows label.goto-first,
+            .csslider > input:nth-of-type(1):checked ~ .arrows > label:nth-of-type(2),
+            .csslider > input:nth-of-type(2):checked ~ .arrows > label:nth-of-type(3),
+            .csslider > input:nth-of-type(3):checked ~ .arrows > label:nth-of-type(4),
+            .csslider > input:nth-of-type(4):checked ~ .arrows > label:nth-of-type(5),
+            .csslider > input:nth-of-type(5):checked ~ .arrows > label:nth-of-type(6),
+            .csslider > input:nth-of-type(6):checked ~ .arrows > label:nth-of-type(7),
+            .csslider > input:nth-of-type(7):checked ~ .arrows > label:nth-of-type(8),
+            .csslider > input:nth-of-type(8):checked ~ .arrows > label:nth-of-type(9),
+            .csslider > input:nth-of-type(9):checked ~ .arrows > label:nth-of-type(10),
+            .csslider > input:nth-of-type(10):checked ~ .arrows > label:nth-of-type(11),
+            .csslider > input:nth-of-type(11):checked ~ .arrows > label:nth-of-type(12) {
+                display: block !important;
+                right: 0 !important;
+                left: auto !important;
+                background-size: 34px!important;
+                background-position: center right !important;
+                background-repeat: no-repeat !important;
+            }
+
+            .csslider > .navigation {
+                position: absolute !important;
+                top: 448px !important;
+                left: 50% !important;
+                width: 100% !important;
+                z-index: 10 !important;
+                font-size: 0 !important;
+                line-height: 0 !important;
+                text-align: center !important;
+                -webkit-touch-callout: none !important;
+                -webkit-user-select: none !important;
+                -khtml-user-select: none !important;
+                -moz-user-select: none !important;
+                -ms-user-select: none !important;
+                user-select: none !important;
+            }
+
+
+            .csslider > .navigation label {
+                position: relative;
+                display: inline-block;
+                cursor: pointer;
+                margin: 10px 18px 0 0;;
+                background-size: 76px;
+                background-position: center;
+                background-repeat: no-repeat;
+                width: 76px;
+                height: 76px;
+            }
+
+            .csslider > .navigation label:nth-child(3) {
+                margin: 0  0 10px 0;
+            }
+            csslider > .navigation label:last-child {
+                margin: 0  0 10px 0;
+            }
+
+
+            .csslider > .navigation label:after {
+                content: '';
+                position: absolute;
+                left: 4px;
+                top: 4px;
+                width: 76px;
+                height: 76px;
+            }
+
+            .thumb {
+                margin-bottom: 16px !important;
+            }
+
+        }
+    </style>
+
+    <!-- Outlook 2013 DPI Correction for Images -->
+    <!--[if gte mso 9]><xml>
+    <o:OfficeDocumentSettings>
+        <o:AllowPNG/>
+        <o:PixelsPerInch>96</o:PixelsPerInch>
+    </o:OfficeDocumentSettings>
+</xml><![endif]-->
+
+
+
 </head>
 
-
-<body bgcolor="#F7F7F7"
-      style="-webkit-font-smoothing: antialiased; width:100% !important; background:#F7F7F7;-webkit-text-size-adjust:none; margin:0; padding:0; min-width:100%">
-
-<!-- PREHEADER TEXT -->
-<span style="display: none !important; color: #FFFFFF; margin:0; padding:0; font-size:1px; line-height:1px;">
-  We hope you're enjoying shaving with Harry's. We’ll be shipping your fresh supplies in a couple of days. Remember, your Shave Plan guarantees you're getting the best savings on Harry's supplies - plus free shipping, always.
-</span>
+<body class="body-tag" bgcolor="#FFFFFF" style="-webkit-font-smoothing: antialiased; width:100% !important; background:#FFFFFF;-webkit-text-size-adjust:none; margin:0; padding:0; min-width:100%">
 
 <!-- CONTAINER TABLE -->
 <table class="container" border="0" cellpadding="0" cellspacing="0" width="100%" style="min-width: 580px;">
     <tr>
         <td>
 
-            <!-- header-logo -->
-            {% include header-logo.html %}
-            <!-- header-logo END -->
+            <!-- ********************************* -->
+            <!-- 1COL: INLINE IMAGE -->
+            <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+                <tr>
+                    <!-- Change background color -->
+                    <td align="center" bgcolor="#FFFFFF">
+                        <table width="580" border="0" align="center" cellpadding="0" cellspacing="0" class="full-table" style="width: 580px">
+                            <tr>
+                                <td>
+                                    <table bgcolor="#2E978F" width="580" border="0" align="center" cellpadding="0" cellspacing="0" class="full-table">
+                                        <!-- H1 -->
+                                        <tr>
+                                            <td align="center" class="mobile_header_padding h1" style="font-size: 33px; line-height: 52px; letter-spacing: 0.5px; font-family: Futura, Trebuchet MS, Arial, sans-serif; color: white; font-weight:normal; padding-top:50px; padding-bottom:20px;">
+                                                <span style="white-space:nowrap;">Hold, Please</span>
+                                            </td>
+                                        </tr>
+                                        <!-- H1 END -->
+                                        <!-- BODY -->
+                                        <tr class="mobile-column">
+                                            <td align="center" class="body main_body_padding" style="font-size: 14px; line-height: 30px; letter-spacing: 0px; font-family: Verdana, Geneva, sans-serif; color: white; font-weight:normal; padding:0px 40px 30px 40px;">
+                                                The real trick to choosing one of our three new styling products is to consider how you like your hair to feel. Neatly structured or gently tousled? Maybe somewhere in between? Tap below to find your new go-to. There’s nothing holding you back, <span style="white-space:nowrap;">after all.</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
 
 
-            <!-- hero-image -->
-            {% include hero-image.html %}
-            <!-- hero-image end -->
+                                            <table border="0" width="580" cellpadding="0" cellspacing="0" class="container">
+                                                <tr>
+                                                    <td style="font-size:1px;line-height:1px;">
 
-            <!--ship-info copy-->
-            {% include ship-info.html %}
-            <!--ship-info copy end-->
-
-
-            {% for product in site.data.shipment.order.products %}
-            <!--shipped-products-->
-                {% include shipped-products.html %}
-            <!--shipped-products end-->
-            {% endfor %}
+                                                        <!-- INTERACTIVE -->
+                                                        <!--[if !mso]><\!-->
+                                                        <div class="webkit" style="display: none;">
 
 
-            <!--shipping-cost-->
-            {% include shipping-cost.html %}
-            <!--shipping-cost end-->
+                                                            <div id="carousel" style="display:none; max-height:0; line-height:0; font-size:0; overflow:hidden; mso-hide:all; background-color: #2E978F">
+                                                                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                                    <tbody>
+                                                                    <tr>
+                                                                        <td align="center">
+                                                                            <style type="text/css">
+                                                                                .csslider > input:nth-of-type(6):checked ~ ul li:first-of-type {  margin-left: -500%; background: url(http://cdn.harrys.com/email/one-off/190513_trimmer_blades/default_spacer.gif); }
+                                                                                .csslider > input:nth-of-type(5):checked ~ ul li:first-of-type {  margin-left: -400%; background: url(http://cdn.harrys.com/email/one-off/190513_trimmer_blades/default_spacer.gif); }
+                                                                                .csslider > input:nth-of-type(4):checked ~ ul li:first-of-type {  margin-left: -300%; background: url(http://cdn.harrys.com/email/one-off/190513_trimmer_blades/default_spacer.gif); }
+                                                                                .csslider > input:nth-of-type(3):checked ~ ul li:first-of-type {  margin-left: -200%; background: url(http://cdn.harrys.com/email/one-off/190513_trimmer_blades/default_spacer.gif); }
+                                                                                .csslider > input:nth-of-type(2):checked ~ ul li:first-of-type {  margin-left: -100%; background: url(http://cdn.harrys.com/email/one-off/190513_trimmer_blades/default_spacer.gif); }
+                                                                                .csslider > input:nth-of-type(1):checked ~ ul li:first-of-type {  margin-left: 0%; url(http://cdn.harrys.com/email/one-off/190513_trimmer_blades/default_spacer.gif); }
+                                                                            </style>
 
-            {% assign has_shave_gel = false %}
-            {% for product in site.data.shipment.order.products %}
-                {% if product.name == 'Shave Gel' %}
-                    {% assign has_shave_gel = true %}
-                    {% break %}
-                {% endif %}
-            {% endfor %}
+<!--                                                                            interactive div-->
+                                                                            <div id="slider1" class="csslider infinity">
+                                                                                <input type="radio" name="slides" checked="checked" id="slides_0" />
+                                                                                <input type="radio" name="slides" id="slides_1" />
+                                                                                <input type="radio" name="slides" id="slides_2" />
+                                                                                <input type="radio" name="slides" id="slides_3" />
+                                                                                <ul class="mobile-hide">
+                                                                                    <li class="hero"><img src="https://s3.amazonaws.com/com.harrys.production.email-assets-cdn/email/one-off/190723_hair-style/desktop/cream.png" alt="sideburn symmetry" width="375" height="684" style="display: block; width: 375px; height: 684px; border: none; color: #263645; font-family: Futura, Trebuchet MS, Arial, sans-serif;"></li>
+                                                                                    <li class="hero"><img src="https://s3.amazonaws.com/com.harrys.production.email-assets-cdn/email/one-off/190723_hair-style/desktop/putty.png" alt="divide and conquer" width="375" height="684" style="display: block; width: 375px; height: 684px; border: none; color: #263645; font-family: Futura, Trebuchet MS, Arial, sans-serif;"></li>
+                                                                                    <li class="hero"><img src="https://s3.amazonaws.com/com.harrys.production.email-assets-cdn/email/one-off/190723_hair-style/desktop/gel.png" alt="shape up" width="375" height="684" style="display: block; width: 375px; height: 684px; border: none; color: #263645; font-family: Futura, Trebuchet MS, Arial, sans-serif;"></li>
+                                                                                </ul>
+                                                                                <ul class="mobile-show" style="display: none;">
+                                                                                    <li class="hero"><img src="https://s3.amazonaws.com/com.harrys.production.email-assets-cdn/email/one-off/190723_hair-style/mobile/cream.png" alt="sideburn symmetry" style="display: block; border: none; color: #263645; font-family: Futura, Trebuchet MS, Arial, sans-serif;"></li>
+                                                                                    <li class="hero"><img src="https://s3.amazonaws.com/com.harrys.production.email-assets-cdn/email/one-off/190723_hair-style/mobile/putty.png" alt="divide and conquer" style="display: block; border: none; color: #263645; font-family: Futura, Trebuchet MS, Arial, sans-serif;"></li>
+                                                                                    <li class="hero"><img src="https://s3.amazonaws.com/com.harrys.production.email-assets-cdn/email/one-off/190723_hair-style/mobile/gel.png" alt="shape up" style="display: block; border: none; color: #263645; font-family: Futura, Trebuchet MS, Arial, sans-serif;"></li>
+                                                                                </ul>
+                                                                                <div class="arrows">
+                                                                                    <label for="slides_0"></label>
+                                                                                    <label for="slides_1"></label>
+                                                                                    <label for="slides_2"></label>
+                                                                                    <label for="slides_0" class="goto-first"></label>
+                                                                                    <label for="slides_2" class="goto-last"></label>
+                                                                                </div>
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                        <!--<![endif]-->
+                                                        <!-- END INTERACTIVE -->
 
-            {% if has_shave_gel == false %}
-            <!--two col for suggested subscription -->
-                {% include suggested-sub.html %}
-            <!--two col end-->
-            {% endif %}
 
 
-            <!--add more body copy-->
-            {% include add-more.html %}
-            <!--header body copy end-->
+                                                        <!-- HIDE if non-webkit and outlook.com or outlook 365 -->
+                                                        <!-- NON-INTERACTIVE -->
+                                                        <div class="non-webkit">
+                                                            <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" class="full-table">
+                                                                <tr>
+                                                                    <td class="static_slide hero" align="center">
+                                                                        <a href="https://www.harrys.com/en/us/products/harrys-blades?utm_source=penpal&utm_medium=email&utm_campaign={{campaign.${name}}}{{campaign.${message_name}}}&utm_content=non_interactive_sideburn">
+                                                                            <img class="mobile-hide" src="https://s3.amazonaws.com/com.harrys.production.email-assets-cdn/email/one-off/190723_hair-style/desktop/cream.png" width="375" height="684" alt="sideburn symmetry" style="display: block; width: 375px; height: 684px; line-height: 298px; border: none; color: #263645; font-family: Futura, Trebuchet MS, Arial, sans-serif;">
+                                                                            <!--[if !mso]><\!-->
+                                                                            <img class="mobile-show" src="http://cdn.harrys.com/email/one-off/190513_trimmer_blades/mobile_slide01.png" alt="sideburn symmetry" style="display: none; border: none; color: #263645; font-family: Futura, Trebuchet MS, Arial, sans-serif;">
+                                                                            <!--<![endif]-->
+                                                                        </a>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="static_slide hero" align="center" style="padding-top:10px; padding-bottom:10px;">
+                                                                        <a href="https://www.harrys.com/en/us/products/harrys-blades?utm_source=penpal&utm_medium=email&utm_campaign={{campaign.${name}}}{{campaign.${message_name}}}&utm_content=non_interactive_eyebrow">
+                                                                            <img class="mobile-hide" src="http://cdn.harrys.com/email/one-off/190513_trimmer_blades/desktop_slide02_full.gif" width="580" height="298" alt="divide and conquer" style="display: block; width: 580px; height: 298px; line-height: 298px; border: none; color: #263645; font-family: Futura, Trebuchet MS, Arial, sans-serif;">
+                                                                            <!--[if !mso]><\!-->
+                                                                            <img class="mobile-show" src="http://cdn.harrys.com/email/one-off/190513_trimmer_blades/mobile_slide02.png" alt="divide and conquer" style="display: none; border: none; color: #263645; font-family: Futura, Trebuchet MS, Arial, sans-serif;">
+                                                                            <!--<![endif]-->
+                                                                        </a>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="static_slide hero" align="center" style="padding-bottom:10px;">
+                                                                        <a href="https://www.harrys.com/en/us/products/harrys-blades?utm_source=penpal&utm_medium=email&utm_campaign={{campaign.${name}}}{{campaign.${message_name}}}&utm_content=non_interactive_beard">
+                                                                            <img class="mobile-hide" src="http://cdn.harrys.com/email/one-off/190513_trimmer_blades/desktop_slide03_full.gif" width="580" height="298" alt="shape up" style="display: block; width: 580px; height: 298px; line-height: 298px; border: none; color: #263645; font-family: Futura, Trebuchet MS, Arial, sans-serif;">
+                                                                            <!--[if !mso]><\!-->
+                                                                            <img class="mobile-show" src="http://cdn.harrys.com/email/one-off/190513_trimmer_blades/mobile_slide03c.png" alt="shape up" style="display: none; border: none; color: #263645; font-family: Futura, Trebuchet MS, Arial, sans-serif;">
+                                                                            <!--<![endif]-->
+                                                                        </a>
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                        </div>
+                                                        <!-- END NON-INTERACTIVE QUESTIONS -->
+
+                                                    </td>
+                                                </tr>
+                                            </table>
 
 
-            <!--suggested items -->
-            {% include suggested-items.html %}
-            <!--suggested items end -->
+                                        </td></tr>
+                                        <!-- BODY END -->
 
-            <!--change-box copy-->
-            {% include change-box.html %}
-            <!--change-box copy end-->
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+            <!-- 1COL: INLINE IMAGE END -->
+            <!-- ********************************* -->
 
 
-            <!--save-on-order body copy-->
-            {% include save-on-order.html %}
-            <!--hsave-on-order body copy end-->
 
 
-            <!-- US & CA FOOTER -->
-            {% include footer.html %}
-            <!-- US & CA FOOTER END -->
+
+            <!-- 2COL: INLINE IMAGE (text right) -->
+            <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                <tr>
+                    <!-- Change background color -->
+                    <td align="center" valign="top" width="100%">
+                        <table align="center" cellspacing="0" cellpadding="0" border="0" width="100%">
+                            <tr>
+                                <td>
+                                    <table width="580" border="0" align="center" cellpadding="0" cellspacing="0" class="full-table" style="width: 580px;">
+                                        <tr>
+                                            <td class="mobile_module_padding" bgcolor="#2E978F" style="padding:60px 50px 60px 50px;">
+
+                                                <table width="480" border="0" align="center" cellpadding="0" cellspacing="0" class="full-table">
+                                                    <tr><td align="center">
+
+
+                                                        <table class="full-table" width="480" cellpadding="0" cellspacing="0" border="0" align="center">
+                                                            <tr>
+                                                                <td width="100%">
+                                                                        <table width="230" align="center" border="0" cellpadding="0" cellspacing="0" class="full-table">
+                                                                            <tr>
+                                                                                <td align="center" style="padding-top:10px;"><a href="https://www.harrys.com/en/us/products/harrys-blades?utm_source=penpal&utm_medium=email&utm_campaign={{campaign.${name}}}{{campaign.${message_name}}}&utm_content=module_blades_img">
+                                                                                    <img class="mobile-hide" src="https://s3.amazonaws.com/com.harrys.production.email-assets-cdn/email/one-off/190723_hair-style/desktop/lookbook.png" width="375" height="99" border="0" alt="Harry's shave kit" style="width:375px; height:99px; line-height: 99px; display:block; font-size: 14px; letter-spacing: 0px; font-family: Verdana, Geneva, sans-serif; color: #666666; font-weight:normal">
+
+                                                                                    <img class="mobile-show" src="https://s3.amazonaws.com/com.harrys.production.email-assets-cdn/email/one-off/190723_hair-style/mobile/lookbook.png" width="255" height="96" border="0" alt="Harry's shave kit" style="width:255px; height:96px; line-height: 99px; display:block; font-size: 14px; letter-spacing: 0px; font-family: Verdana, Geneva, sans-serif; color: #666666; font-weight:normal">
+
+                                                                                </a>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </table>
+
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td></tr>
+                                                </table>
+                                            </td></tr></table>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+            <!-- 2COL: INLINE IMAGE END -->
+
+            <!-- COPY BLOCK-->
+            <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+                <tr>
+                    <!-- Change background color -->
+                    <td>
+                        <table align="center" border="0" cellpadding="0" cellspacing="0" class="full-table" width="580" style="width: 580px;">
+                            <tr>
+                                <td bgcolor="#263645" align="center" class="note" style="font-size: 13px; line-height: 20px; letter-spacing: 0.4px; font-family: Verdana, Geneva, sans-serif; color: #FFFFFF; font-weight:normal; padding:10px 20px;">
+                                    Shipping is always free on<span class="mobile-hide">&nbsp;</span><br style="display: none;" class="mobile-show" />orders of $10 or&nbsp;more.
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+            <!-- COPY BLOCK END -->
+
+            <!-- FOOTER -->
+            <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+                <tr>
+                    <!-- Change background color -->
+                    <td bgcolor="#FFFFFF" align="center" style="padding: 0 20px">
+                        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                            <tr><td width="100%" height="50" style="font-size:1px; line-height:1px; mso-line-height-rule: exactly;">&nbsp;</td></tr>
+
+                            <!-- MAMMOTH -->
+                            <tr>
+                                <td align="center">
+                                    <a href="http://harrys.com/en/us?utm_source=penpal&utm_medium=email&utm_campaign={{campaign.${name}}}{{campaign.${message_name}}}&utm_content=mammoth">
+                                        <img src="http://cdn.harrys.com/us-email/lifecycle/welcome/mammoth.png" width="47" height="36" border="0" style="display:inline-block; font-size: 14px; letter-spacing: 0px; font-family: Verdana, Geneva, sans-serif; color: #666666;" alt="Mammoth">
+                                    </a>
+                                </td>
+                            </tr>
+                            <!-- MAMMOTH END -->
+
+                            <tr><td width="100%" height="30" style="font-size:1px; line-height:1px; mso-line-height-rule: exactly;">&nbsp;</td></tr>
+
+                            <!-- NOTE -->
+                            <tr>
+                                <td align="center" class="note" style="font-size: 13px; line-height: 24px; letter-spacing: 0.4px; font-family: Verdana, Geneva, sans-serif; color: #666666; font-weight:normal">
+                                    <a href="mailto:help@harrys.com" style="color: #666666; text-decoration: none;">help@harrys.com</a>
+                                    <br>
+                                    <span class="smart-666666" style="text-decoration: none;">PO Box 566, <span style="white-space:nowrap;">New York, NY, 10014</span></span>
+                                    <br>
+                                    <a href="https://itunes.apple.com/app/apple-store/id990024014?pt=108215816&ct=20161010_email_footer&mt=8" style="color: #666666; text-decoration: underline;">Download the App</a> | <a href="{{${set_user_to_unsubscribed_url}}}" style="color: #666666; text-decoration: underline;">Unsubscribe</a>
+
+                                </td>
+                            </tr>
+
+                            <!-- NOTE END -->
+
+                            <tr><td width="100%" height="50" style="font-size:1px; line-height:1px; mso-line-height-rule: exactly;">&nbsp;</td></tr>
+
+                        </table>
+                    </td>
+                </tr>
+            </table>
+            <!-- FOOTER END -->
 
 
             <!-- CONTAINER TABLE END -->
         </td>
     </tr>
 </table>
+
+<!-- Email Client Monitor Pixel -->
+<img src="https://pixel.app.returnpath.net/pixel.gif?r=d1f034755e407b0c5fa1baa41550fd8a0fc53b10&c={{campaign.${name}}}{{campaign.${message_name}}}&s={{${user_id}}}" width="1" height="1" />
+
+
 </body>
 </html>
